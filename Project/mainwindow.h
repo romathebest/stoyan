@@ -3,6 +3,9 @@
 
 #include <QMainWindow>
 
+#include "processdialog.h"
+#include "analizator.h"
+
 namespace Ui {
 class MainWindow;
 }
@@ -18,8 +21,17 @@ public:
 private slots:
     void on_actionQuit_triggered();
 
+    void on_action_triggered();
+
 private:
     Ui::MainWindow *ui;
+
+    bool isInitialize;
+    ProcessDialog* dialogProcess;
+    Analizator* analizator;
+
+    void WriteTextField();
+
 };
 
 #endif // MAINWINDOW_H

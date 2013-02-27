@@ -6,13 +6,20 @@
 
 QT       += core gui
 
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+
 TARGET = Project
 TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    processdialog.cpp \
+    analizator.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    processdialog.h \
+    analizator.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    chooseProcess.ui
