@@ -5,6 +5,7 @@
 
 #include "processdialog.h"
 #include "analizator.h"
+#include "qcustomplot.h"
 
 namespace Ui {
 class MainWindow;
