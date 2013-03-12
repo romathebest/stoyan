@@ -59,9 +59,11 @@ MainWindow::MainWindow(QWidget *parent) :
     rect->topLeft->setCoords(0, 2);
     rect->bottomRight->setCoords(4, 0);
     rect->setBrush(*brush);
-      customPlot->addItem(rect);
-      customPlot->setRangeDrag(Qt::Horizontal | Qt::Vertical);
-      customPlot->setRangeZoom(Qt::Horizontal | Qt::Vertical);
+    customPlot->addItem(rect);
+    customPlot->setRangeDrag(Qt::Horizontal | Qt::Vertical);
+    customPlot->setRangeZoom(Qt::Horizontal | Qt::Vertical);
+
+    connect(customPlot, SIGNAL(mousePress(QMouseEvent*)), this, SLOT(areaCliked(QMouseEvent*)));
 
 
       //labelItemAnchors(rect);
@@ -100,4 +102,9 @@ void MainWindow::on_action_triggered()
 void MainWindow::WriteTextField()
 {
     ui->dataInfo->setText(analizator->getTextField());
+}
+
+void MainWindow::areaCliked(QMouseEvent* event)
+{
+
 }

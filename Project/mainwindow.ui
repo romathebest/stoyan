@@ -33,115 +33,114 @@
           <attribute name="title">
            <string>Область</string>
           </attribute>
-          <widget class="QCustomPlot" name="qcpArea" native="true">
-           <property name="geometry">
-            <rect>
-             <x>30</x>
-             <y>20</y>
-             <width>331</width>
-             <height>171</height>
-            </rect>
-           </property>
-          </widget>
-          <widget class="QSpinBox" name="spinBoxX1">
-           <property name="geometry">
-            <rect>
-             <x>20</x>
-             <y>340</y>
-             <width>42</width>
-             <height>22</height>
-            </rect>
-           </property>
-          </widget>
-          <widget class="QSpinBox" name="spinBoxX2">
-           <property name="geometry">
-            <rect>
-             <x>110</x>
-             <y>340</y>
-             <width>42</width>
-             <height>22</height>
-            </rect>
-           </property>
-          </widget>
-          <widget class="QLabel" name="labelX">
-           <property name="geometry">
-            <rect>
-             <x>70</x>
-             <y>340</y>
-             <width>41</width>
-             <height>16</height>
-            </rect>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>14</pointsize>
-             <weight>50</weight>
-             <italic>false</italic>
-             <bold>false</bold>
-             <underline>false</underline>
-             <kerning>true</kerning>
-            </font>
-           </property>
-           <property name="text">
-            <string>≤x≤</string>
-           </property>
-          </widget>
-          <widget class="QSpinBox" name="spinBoxT2">
-           <property name="geometry">
-            <rect>
-             <x>360</x>
-             <y>340</y>
-             <width>42</width>
-             <height>22</height>
-            </rect>
-           </property>
-          </widget>
-          <widget class="QSpinBox" name="spinBoxT1">
-           <property name="geometry">
-            <rect>
-             <x>260</x>
-             <y>340</y>
-             <width>42</width>
-             <height>22</height>
-            </rect>
-           </property>
-          </widget>
-          <widget class="QLabel" name="labelT">
-           <property name="geometry">
-            <rect>
-             <x>310</x>
-             <y>340</y>
-             <width>31</width>
-             <height>20</height>
-            </rect>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>14</pointsize>
-             <weight>50</weight>
-             <italic>false</italic>
-             <bold>false</bold>
-             <underline>false</underline>
-             <kerning>true</kerning>
-            </font>
-           </property>
-           <property name="text">
-            <string>≤t≤</string>
-           </property>
-          </widget>
-          <widget class="QCommandLinkButton" name="commandLinkButtonNext">
-           <property name="geometry">
-            <rect>
-             <x>580</x>
-             <y>330</y>
-             <width>71</width>
-             <height>41</height>
-            </rect>
-           </property>
-           <property name="text">
-            <string>Далі</string>
-           </property>
-          </widget>
+          <layout class="QGridLayout" name="gridLayout">
+           <item row="0" column="0">
+            <widget class="QCustomPlot" name="qcpArea" native="true"/>
+           </item>
+           <item row="1" column="0">
+            <widget class="Line" name="line">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <layout class="QHBoxLayout" name="horizontalLayout_5">
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_3">
+               <property name="sizeConstraint">
+                <enum>QLayout::SetFixedSize</enum>
+               </property>
+               <item>
+                <widget class="QSpinBox" name="spinBoxX1"/>
+               </item>
+               <item>
+                <widget class="QLabel" name="labelX">
+                 <property name="font">
+                  <font>
+                   <pointsize>14</pointsize>
+                   <weight>50</weight>
+                   <italic>false</italic>
+                   <bold>false</bold>
+                   <underline>false</underline>
+                   <kerning>true</kerning>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>≤x≤</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QSpinBox" name="spinBoxX2"/>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_4">
+               <property name="sizeConstraint">
+                <enum>QLayout::SetFixedSize</enum>
+               </property>
+               <item>
+                <widget class="QSpinBox" name="spinBoxT1"/>
+               </item>
+               <item>
+                <widget class="QLabel" name="labelT">
+                 <property name="font">
+                  <font>
+                   <pointsize>14</pointsize>
+                   <weight>50</weight>
+                   <italic>false</italic>
+                   <bold>false</bold>
+                   <underline>false</underline>
+                   <kerning>true</kerning>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>≤t≤</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QSpinBox" name="spinBoxT2"/>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer_2">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QCommandLinkButton" name="commandLinkButtonNext">
+               <property name="minimumSize">
+                <size>
+                 <width>71</width>
+                 <height>41</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>71</width>
+                 <height>41</height>
+                </size>
+               </property>
+               <property name="text">
+                <string>Далі</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
          </widget>
          <widget class="QWidget" name="tabCondition">
           <attribute name="title">

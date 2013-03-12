@@ -22,6 +22,8 @@ private slots:
     void on_actionQuit_triggered();
 
     void on_action_triggered();
+    void areaCliked(QMouseEvent* event);
+
 
 private:
     Ui::MainWindow *ui;
