@@ -10,6 +10,14 @@ Analizator::~Analizator()
 {
 }
 
+void Analizator::clearAllFields()
+{
+    mProcess.clear();
+    mGrin.clear();
+    mControl.clear();
+    mFullTask.clear();
+}
+
 void Analizator::setProcessParameters(QString process, QString grin, QString control)
 {
     mProcess = process;
@@ -17,8 +25,18 @@ void Analizator::setProcessParameters(QString process, QString grin, QString con
     mControl = control;
 }
 
+void Analizator::setProcessParameters(QString task)
+{
+    mFullTask = task;
+}
+
 QString Analizator::getTextField()
 {
+    if (!mFullTask.isEmpty())
+    {
+        return mFullTask;
+    }
+
     QString text;
     text = " Процес: \n"+mProcess +"\n Функція Гріна: \n"+mGrin;
 

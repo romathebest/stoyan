@@ -28,14 +28,17 @@ SOURCES += main.cpp\
     processdialog.cpp \
     analizator.cpp \
     system.cpp \
-    area.cpp
+    area.cpp \
+    dialogchooseexistprocess.cpp
 
 HEADERS  += mainwindow.h \
     processdialog.h \
     analizator.h \
     system.h \
     point3.h \
-    area.h
+    area.h \
+    dialogchooseexistprocess.h
 
 FORMS    += mainwindow.ui \
-    chooseProcess.ui
+    chooseProcess.ui \
+    dialogchooseexistprocess.ui

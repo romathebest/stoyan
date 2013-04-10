@@ -6,6 +6,11 @@ ProcessDialog::ProcessDialog(QDialog *parent) :
     dialogForm->setupUi(this);
 }
 
+ProcessDialog::~ProcessDialog()
+{
+    delete dialogForm;
+}
+
 void ProcessDialog::on_doneButton_clicked()
 {
     emit sendProcess(dialogForm->processEdit->text(), dialogForm->grinEdit->text(), dialogForm->controlEdit->text());

@@ -10,6 +10,7 @@ class ProcessDialog : public QDialog
     Q_OBJECT
 public:
     explicit ProcessDialog(QDialog *parent = 0);
+    ~ProcessDialog();
     
 signals:
     void sendProcess(QString, QString, QString);

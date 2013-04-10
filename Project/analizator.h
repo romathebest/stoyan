@@ -11,11 +11,14 @@ public:
     ~Analizator();
 
     QString getTextField();
+    void clearAllFields();
 
 public slots:
     void setProcessParameters(QString, QString, QString);
+    void setProcessParameters(QString);
 
 private:
+    QString mFullTask;
     QString mProcess;
     QString mControl;
     QString mGrin;

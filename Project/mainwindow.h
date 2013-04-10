@@ -4,6 +4,7 @@
 #include <QMainWindow>
 
 #include "processdialog.h"
+#include "dialogchooseexistprocess.h"
 #include "analizator.h"
 
 namespace Ui {
@@ -20,17 +21,19 @@ public:
 
 private slots:
     void on_actionQuit_triggered();
-
     void on_action_triggered();
-    void areaCliked(QMouseEvent* event);
+    void on_actionExistModel_triggered();
 
+    void on_pushButton_clicked();
 
 private:
     Ui::MainWindow *ui;
 
     bool isInitialize;
     ProcessDialog* dialogProcess;
+    dialogChooseExistProcess* dialogGetModel;
     Analizator* analizator;
+    QRect startPosition;
 
     void WriteTextField();
 

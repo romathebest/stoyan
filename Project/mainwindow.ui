@@ -35,7 +35,9 @@
           </attribute>
           <layout class="QGridLayout" name="gridLayout">
            <item row="0" column="0">
-            <widget class="QCustomPlot" name="qcpArea" native="true"/>
+            <widget class="QCustomPlot" name="qcpArea" native="true">
+             <zorder>widget_3</zorder>
+            </widget>
            </item>
            <item row="1" column="0">
             <widget class="Line" name="line">
@@ -155,16 +157,19 @@
         </widget>
        </item>
        <item>
-        <widget class="QTextEdit" name="dataInfo">
+        <widget class="QWidget" name="widget_3" native="true">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
          <property name="sizePolicy">
-          <sizepolicy hsizetype="Maximum" vsizetype="Expanding">
+          <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
          <property name="minimumSize">
           <size>
-           <width>20</width>
+           <width>300</width>
            <height>0</height>
           </size>
          </property>
@@ -174,14 +179,44 @@
            <height>16777215</height>
           </size>
          </property>
-         <property name="font">
-          <font>
-           <pointsize>10</pointsize>
-          </font>
+         <property name="sizeIncrement">
+          <size>
+           <width>300</width>
+           <height>0</height>
+          </size>
          </property>
-         <property name="readOnly">
-          <bool>true</bool>
+         <property name="baseSize">
+          <size>
+           <width>300</width>
+           <height>0</height>
+          </size>
          </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_6">
+          <item>
+           <widget class="QTextEdit" name="dataInfo">
+            <property name="minimumSize">
+             <size>
+              <width>20</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>300</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </item>
       </layout>
@@ -208,6 +243,13 @@
           </size>
          </property>
         </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton">
+         <property name="text">
+          <string>Показати паспорт</string>
+         </property>
+        </widget>
        </item>
        <item>
         <widget class="QPushButton" name="buildButton">
@@ -241,7 +283,7 @@
      <string>Процес</string>
     </property>
     <addaction name="action"/>
-    <addaction name="action_2"/>
+    <addaction name="actionExistModel"/>
    </widget>
    <addaction name="menu"/>
    <addaction name="menu_2"/>
@@ -265,7 +307,7 @@
     <string>Задати явно</string>
    </property>
   </action>
-  <action name="action_2">
+  <action name="actionExistModel">
    <property name="text">
     <string>Вибрати шаблонний</string>
    </property>
