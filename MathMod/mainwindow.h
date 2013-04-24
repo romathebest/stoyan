@@ -24,6 +24,12 @@ private slots:
 
     void on_pushButton_2_clicked();
 
+    void on_radioButton_2_pressed();
+
+    void on_radioButton_pressed();
+
+    void on_pushButton_5_pressed();
+
 private:
     Ui::MainWindow *ui;
     ParametrsWidget *m_ParametersWidget;

@@ -9,7 +9,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     m_ParametersWidget = new ParametrsWidget(ui->widget_3);
-
+    ui->toolBox->setCurrentIndex(0);
 }
 
 MainWindow::~MainWindow()
@@ -26,6 +26,7 @@ void MainWindow::on_pushButton_pressed()
 
     m_AreaWidget = new AreaWidget(m_ParametersWidget->parameters(), ui->widget_5);
     ui->widgetArea->update();
+    ui->toolBox->setCurrentIndex(1);
 }
 
 void MainWindow::on_pushButton_2_clicked()
@@ -34,4 +35,20 @@ void MainWindow::on_pushButton_2_clicked()
         delete m_ObservationPointWidget;
 
     m_ObservationPointWidget = new ObservationPointWidget(m_AreaWidget->area(), ui->widget_6);
+    ui->toolBox->setCurrentIndex(3);
+}
+
+void MainWindow::on_radioButton_2_pressed()
+{
+    ui->comboBox->setEnabled(true);
+}
+
+void MainWindow::on_radioButton_pressed()
+{
+    ui->comboBox->setEnabled(false);
+}
+
+void MainWindow::on_pushButton_5_pressed()
+{
+    ui->toolBox->setCurrentIndex(2);
 }
