@@ -1,60 +1,53 @@
+
+
+
 #include "parametrswidget.h"
 
 ParametrsWidget::ParametrsWidget(QWidget *parent) :
-    QWidget(parent), m_CurrentValue(1)
+    QWidget(parent)
 {
-   // this->setSizePolicy(Qt::PreferredSize, Qt::PreferredSize);
-
-    m_paramStep = 'a';
-
-    QStringList horzHeaders("t");
     QStringList vertHeaders("Параметри");
 
-    QHBoxLayout *hbox = new QHBoxLayout(this);
-    hbox->setSpacing(1);
+    QGridLayout *layout = new QGridLayout();
+    layout->setSpacing(1);
 
-    m_tableWidget = new QTableWidget(this);
+    m_tableWidget = new QTableWidget(parent);
     m_tableWidget->setRowCount(1);
     m_tableWidget->setColumnCount(1);
-    m_tableWidget->setMinimumHeight(55);
-    m_tableWidget->setMaximumHeight(75);
-    //m_tableWidget->setMaximumSize(1000, 55);
+    m_tableWidget->setMaximumWidth(135);
 
-    m_tableWidget->setHorizontalHeaderLabels(horzHeaders);
-    m_tableWidget->setVerticalHeaderLabels(vertHeaders);
+    m_tableWidget->setHorizontalHeaderLabels(vertHeaders);
 
-    m_checkT = new QCheckBox(this);
-    m_checkT->setChecked(true);
+    m_checkT = new QTableWidgetItem("t");
+    m_checkT->setTextAlignment(Qt::AlignCenter);
+    m_checkT->setCheckState(Qt::Checked);
 
-    m_tableWidget->setCellWidget(0, 0, m_checkT);
-    m_tableWidget->setColumnWidth(0, 15);
-    m_tableWidget->setMinimumWidth(375);
+    m_tableWidget->setItem(0, 0, m_checkT);
 
-    m_spinBox = new QSpinBox(this);
+    m_spinBox = new QSpinBox(parent);
     m_spinBox->setMinimum(1);
-    m_spinBox->setMaximum(26);
-    m_spinBox->findChild<QLineEdit*>()->setReadOnly(true);
-    m_spinBox->setMinimumSize(30, 30);
+    m_spinBox->setMinimumSize(50, 30);
+    m_spinBox->setMaximumSize(80, 30);
 
-    hbox->addWidget(m_spinBox);
-    hbox->addWidget(m_tableWidget);
+    layout->addWidget(m_spinBox, 0, 0, 1, 1, Qt::AlignCenter);
+    layout->addWidget(m_tableWidget, 1, 0, 1, 1);
 
-    setLayout(hbox);
+    parent->setLayout(layout);
 
     connect(m_spinBox, SIGNAL(valueChanged(int)), this, SLOT(numParametersChange(int)));
 }
+
 
 PointStr ParametrsWidget::parameters()
 {
     m_Parameters.clear();
 
-    int n = m_tableWidget->columnCount();
-    if(m_checkT->isChecked()) n++;
+    if(m_checkT->checkState() == Qt::Checked)
+        m_Parameters.push_back("t");
 
-    if(m_checkT->isChecked()) m_Parameters.push_back("t");
-    for(int i = 1; i < m_tableWidget->columnCount(); i++)
+    for(int i = 1; i < m_tableWidget->rowCount(); i++)
     {
-        m_Parameters.push_back(m_tableWidget->item(0, i)->text().toStdString());
+        m_Parameters.push_back(m_tableWidget->item(i, 0)->text().toStdString());
     }
 
     return m_Parameters;
@@ -62,20 +55,14 @@ PointStr ParametrsWidget::parameters()
 
 void ParametrsWidget::numParametersChange(int num)
 {
-    m_tableWidget->setColumnCount(num);
-    if(m_CurrentValue < num)
+    int columnCount = m_tableWidget->columnCount();
+    m_tableWidget->setRowCount(num);
+    for(int i = columnCount; i < num; i++)
     {
-        QTableWidgetItem *cellText = new QTableWidgetItem(QString(m_paramStep));
-        m_paramStep++;
-        if(m_paramStep == 't') m_paramStep++;
+        QTableWidgetItem *cellText = new QTableWidgetItem("x" + QString::number(i));
+        cellText->setTextAlignment(Qt::AlignCenter);
 
-        m_tableWidget->setItem(0, num - 1, cellText);
-        m_tableWidget->setColumnWidth(num - 1, 40);
+        m_tableWidget->setItem(i, 0, cellText);
+        m_tableWidget->setColumnWidth(i, 40);
     }
-    else
-    {
-        m_paramStep--;
-        if(m_paramStep == 't') m_paramStep--;
-    }
-    m_CurrentValue = num;
 }

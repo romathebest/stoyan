@@ -3,11 +3,8 @@
 
 #include <QWidget>
 #include <QTableWidget>
-#include <QHeaderView>
-#include <QVBoxLayout>
-#include <QScrollBar>
 #include <QDoubleSpinBox>
-#include <QSize>
+#include <QGridLayout>
 
 #include "Widgets/rangewidget.h"
 #include "Matmod/Area.h"

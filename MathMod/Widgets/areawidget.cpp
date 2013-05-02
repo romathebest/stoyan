@@ -3,16 +3,16 @@
 AreaWidget::AreaWidget(PointStr param, QWidget *parent) :
     QWidget(parent), m_Parameters(param)
 {
-    QVBoxLayout *vbox = new QVBoxLayout(this);
-   // vbox->setSpacing(1);
+    QGridLayout *vbox = new QGridLayout();
+    vbox->setSpacing(1);
 
     for(int i = 0; i < m_Parameters.size(); i++)
     {
-        m_RangeWidgets.push_back(new RangeWidget(m_Parameters[i], this));
-        vbox->addWidget(m_RangeWidgets.back());
+        m_RangeWidgets.push_back(new RangeWidget(m_Parameters[i]));
+        vbox->addWidget(m_RangeWidgets.back(), i, 0, 1, 1, Qt::AlignCenter);
     }
 
-    setLayout(vbox);
+    parent->setLayout(vbox);
 }
 
 AreaWidget::~AreaWidget()

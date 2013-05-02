@@ -4,9 +4,7 @@
 #include <QWidget>
 #include <QTableWidget>
 #include <QSpinBox>
-#include <QCheckBox>
-#include <QHBoxLayout>
-#include <QLineEdit>
+#include <QGridLayout>
 
 #include "Matmod/Point.h"
 
@@ -19,18 +17,15 @@ public:
     explicit ParametrsWidget(QWidget *parent = 0);
     PointStr parameters();
 signals:
-    
+
 public slots:
     void numParametersChange(int num);
 private:
     QTableWidget *m_tableWidget;
     QSpinBox *m_spinBox;
-    QCheckBox *m_checkT;
+    QTableWidgetItem *m_checkT;
 
     PointStr m_Parameters;
-    int m_CurrentValue;
-    char m_paramStep;
-    
 };
 
 #endif // PARAMETRSWIDGET_H
