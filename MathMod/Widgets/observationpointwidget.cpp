@@ -45,4 +45,25 @@ ObservationPointWidget::ObservationPointWidget(mathmod::Area area, QWidget *pare
 void ObservationPointWidget::addPoint()
 {
     m_twPoints->insertRow(m_twPoints->rowCount());
+
+    for(int j = 0; j < m_twPoints->columnCount(); j++)
+    {
+        m_twPoints->setItem(m_twPoints->rowCount() - 1, j, new QTableWidgetItem("0"));
+    }
+}
+
+vector<mathmod::Pointf> ObservationPointWidget::points()
+{
+    vector<mathmod::Pointf> observationPoints;
+
+    for(int i = 0; i < m_twPoints->rowCount(); i++)
+    {
+        mathmod::Pointf p(m_twPoints->columnCount());
+        for(int j = 0; j < m_twPoints->columnCount(); j++)
+        {
+            p[j] = m_twPoints->item(i, j)->text().toFloat();
+        }
+    }
+
+    return observationPoints;
 }
