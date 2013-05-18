@@ -2,17 +2,14 @@
 #define _SYSTEM_H_ 
 
 #include "Point.h"
+#include "mathmod.h"
+
 #include <string>
 #include <vector>
 
 namespace mathmod
 {
-	typedef std::string Function;
-	typedef Pointf Condition;
-	typedef Pointf OutsideAreaPoint;
-
-
-	class System
+    class System : public ISystem
 	{
 	public:
 		System(void);
@@ -37,6 +34,15 @@ namespace mathmod
 		void addOutsideAreaPoint(const OutsideAreaPoint& point);
 		int numOutsideAreaPoints() const;
 
+        void setProblemType(ProblemType type);
+        ProblemType getProblemType();
+
+        void setControlType(ControlType type);
+        ControlType getControlType();
+
+        void setArea(const Area& area);
+        Area getArea() const;
+
 	private:
 		Function m_Process;
 		Function m_DifOperator;
@@ -50,8 +56,10 @@ namespace mathmod
 		std::vector<OutsideAreaPoint> m_BottomOutsideAreaPoints;
 
 
-
+        ProblemType m_ProblemType;
+        ControlType m_ControlType;
 		PointStr m_Parameters;
+        Area m_Area;
 	};
 
 }

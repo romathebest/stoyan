@@ -1,10 +1,29 @@
 #ifndef _RANGE_H_
 #define _RANGE_H_
 
+#include <iostream>
+#include <sstream>
 #include <string>
+using std::string;
 
 namespace mathmod
 {
+
+    class Converter
+    {
+    public:
+
+        template<typename T>
+        static string toStr(const T& t)
+        {
+            string res = "";
+            std::ostringstream os;
+            os<<t;
+            res = os.str();
+            return res;
+        }
+    };
+
 	template<typename T>
 	class Range
 	{
@@ -17,6 +36,7 @@ namespace mathmod
 		Range(T _min, T _max, std::string _param);
 		~Range();
 
+        string toString();
 		bool isIn(T val);
 	};
 
@@ -50,6 +70,18 @@ namespace mathmod
 	Range<T>::~Range(void)
 	{
 	}
+
+    template <typename T>
+    string Range<T>::toString()
+    {
+        string str ="";
+        str += Converter::toStr(min);
+        str += " <= ";
+        str += param;
+        str += " <= ";
+        str += Converter::toStr(max);
+        return str;
+    }
 
 	typedef Range<int> Rangei;
 	typedef Range<double> Ranged;

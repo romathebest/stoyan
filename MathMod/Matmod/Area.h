@@ -4,6 +4,9 @@
 #include "Range.h"
 #include "Point.h"
 #include <vector>
+#include <string>
+
+using std::string;
 
 namespace mathmod
 {
@@ -18,6 +21,8 @@ namespace mathmod
         int size();
 
         void addRange(const Rangef &range);
+        string toString();
+
 	private:
 		std::vector<Rangef> m_Ranges;
 	};

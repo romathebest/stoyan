@@ -42,7 +42,7 @@
           <string notr="true"/>
          </property>
          <property name="currentIndex">
-          <number>3</number>
+          <number>1</number>
          </property>
          <widget class="QWidget" name="pageParameters">
           <property name="geometry">
@@ -114,7 +114,7 @@
           <property name="geometry">
            <rect>
             <x>0</x>
-            <y>-9</y>
+            <y>0</y>
             <width>415</width>
             <height>288</height>
            </rect>
@@ -158,7 +158,7 @@
                      </widget>
                     </item>
                     <item>
-                     <widget class="QLineEdit" name="lineEdit"/>
+                     <widget class="QLineEdit" name="lineEditL"/>
                     </item>
                    </layout>
                   </widget>
@@ -174,15 +174,12 @@
                      </widget>
                     </item>
                     <item>
-                     <widget class="QLineEdit" name="lineEdit_2"/>
+                     <widget class="QLineEdit" name="lineEditY"/>
                     </item>
                    </layout>
                   </widget>
                  </item>
                 </layout>
-                <zorder>label</zorder>
-                <zorder>widget_11</zorder>
-                <zorder>widget_12</zorder>
                </widget>
               </item>
               <item>
@@ -192,7 +189,7 @@
                   <widget class="QWidget" name="widget_13" native="true">
                    <layout class="QVBoxLayout" name="verticalLayout_7">
                     <item>
-                     <widget class="QRadioButton" name="radioButton">
+                     <widget class="QRadioButton" name="radioButtonDirectProblem">
                       <property name="text">
                        <string>Пряма задача</string>
                       </property>
@@ -202,7 +199,7 @@
                      </widget>
                     </item>
                     <item>
-                     <widget class="QRadioButton" name="radioButton_2">
+                     <widget class="QRadioButton" name="radioButtonInverseProblem">
                       <property name="text">
                        <string>Оберенена задача</string>
                       </property>
@@ -215,7 +212,7 @@
                   <widget class="QWidget" name="widget_14" native="true">
                    <layout class="QVBoxLayout" name="verticalLayout_8">
                     <item>
-                     <widget class="QComboBox" name="comboBox">
+                     <widget class="QComboBox" name="comboBoxControlType">
                       <property name="enabled">
                        <bool>false</bool>
                       </property>
@@ -281,7 +278,6 @@
               </item>
              </layout>
              <zorder>widget_15</zorder>
-             <zorder>radioButton</zorder>
              <zorder>widget_9</zorder>
              <zorder>widget_10</zorder>
             </widget>
@@ -421,7 +417,24 @@
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_6">
        <item>
-        <widget class="QGraphicsView" name="graphicsView"/>
+        <widget class="QLabel" name="labelPassport">
+         <property name="text">
+          <string>TextLabel</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
        </item>
       </layout>
      </widget>

@@ -31,4 +31,16 @@ namespace mathmod
 	Area::~Area(void)
 	{
 	}
+
+    string Area::toString()
+    {
+        string res = "";
+
+        for(int i = 0; i < m_Ranges.size(); i++)
+        {
+            res += m_Ranges[i].toString();
+            res += "\n";
+        }
+        return res;
+    }
 }

@@ -4,6 +4,8 @@
 #include <vector>
 #include <string>
 
+using std::string;
+
 namespace mathmod
 {
 	template<typename T>
@@ -18,6 +20,8 @@ namespace mathmod
 
         void push_back(T val);
         void clear();
+
+        string toString();
 
 		~Point(void);
 	private:
@@ -65,6 +69,19 @@ namespace mathmod
     {
         m_Vector.clear();
     }
+
+
+    template <typename T>
+    string Point<T>::toString()
+    {
+        string str = "";
+        for(int i = 0; i < m_Vector.size(); i++ )
+        {
+            str += m_Vector[i] +", ";
+        }
+        return str;
+    }
+
 
 	typedef Point<int> Pointi;
 	typedef Point<double> Pointd;

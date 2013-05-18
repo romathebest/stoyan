@@ -23,6 +23,8 @@ SOURCES += main.cpp\
     Widgets/parametrswidget.cpp \
     Widgets/observationpointwidget.cpp \
     Widgets/areawidget.cpp \
+    Matmod/passport.cpp \
+    Matmod/wolframobject.cpp
 
 HEADERS  += mainwindow.h \
     Matmod/System.h \
@@ -35,6 +37,8 @@ HEADERS  += mainwindow.h \
     Widgets/pointsetterwidget.h \
     Widgets/parametrswidget.h \
     Widgets/observationpointwidget.h \
-    Widgets/areawidget.h
+    Widgets/areawidget.h \
+    Matmod/passport.h \
+    Matmod/wolframobject.h
 
 FORMS    += mainwindow.ui

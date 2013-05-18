@@ -4,9 +4,8 @@ namespace mathmod
 {
 	System::System(void)
 		: m_Parameters(0), 
-		m_Process(""), m_DifOperator(""), m_RightSideOfEquation("")
+        m_Process(""), m_DifOperator(""), m_RightSideOfEquation("")
 	{
-
 	}
 
 
@@ -69,4 +68,44 @@ namespace mathmod
 	{
 		return m_InitialConditions.size() + m_BoundaryConditions.size() + m_CurrentConditions.size();
 	}
+
+    void System::addOutsideAreaPoint(const OutsideAreaPoint& point)
+    {
+
+    }
+
+    int System::numOutsideAreaPoints() const
+    {
+
+    }
+
+    void System::setProblemType(ProblemType type)
+    {
+        m_ProblemType = type;
+    }
+
+    ProblemType System::getProblemType()
+    {
+        return m_ProblemType;
+    }
+
+    void System::setControlType(ControlType type)
+    {
+        m_ControlType = type;
+    }
+
+    ControlType System::getControlType()
+    {
+        return m_ControlType;
+    }
+
+    void System::setArea(const Area &area)
+    {
+        m_Area = area;
+    }
+
+    Area System::getArea() const
+    {
+        return m_Area;
+    }
 }
