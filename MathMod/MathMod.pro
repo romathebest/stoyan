@@ -41,4 +41,6 @@ HEADERS  += mainwindow.h \
     Matmod/passport.h \
     Matmod/wolframobject.h
 
+LIBS += C:/Qt/Qt5.0.1/Tools/MinGW/i686-w64-mingw32/lib/ml32i3m.lib
+
 FORMS    += mainwindow.ui
