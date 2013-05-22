@@ -11,8 +11,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = MathMod
 TEMPLATE = app
 
-CONFIG(debug, release|debug)
-{
+CONFIG(debug, release|debug){
   win32:QCPLIB = qcustomplotd1
   else: QCPLIB = qcustomplotd
 } else {
@@ -38,7 +37,8 @@ SOURCES += main.cpp\
     Matmod/passport.cpp \
     Matmod/wolframobject.cpp \
     dialogchooseexistprocess.cpp \
-    3rdparty/QCustomPlot/include/qcustomplot.cpp
+    3rdparty/QCustomPlot/include/qcustomplot.cpp \
+    Widgets/plotdrawing.cpp
 
 HEADERS  += mainwindow.h \
     Matmod/System.h \
@@ -55,7 +55,8 @@ HEADERS  += mainwindow.h \
     Matmod/passport.h \
     Matmod/wolframobject.h \
     dialogchooseexistprocess.h \
-    3rdparty/QCustomPlot/include/qcustomplot.h
+    3rdparty/QCustomPlot/include/qcustomplot.h \
+    Widgets/plotdrawing.h
 
 #LIBS += C:/Qt/Qt5.0.1/Tools/MinGW/i686-w64-mingw32/lib/ml32i3m.lib
 LIBS += E:/QT/5.0.1/Tools/MinGW/i686-w64-mingw32/lib/ml32i3m.lib

@@ -12,6 +12,9 @@ MainWindow::MainWindow(QWidget *parent) :
     m_WolframObject(NULL)
 {
     ui->setupUi(this);
+
+    m_PlotDrawing = new PlotDrawing(ui->ResultGraphic);
+
     m_ParametersWidget = new ParametrsWidget(ui->widget_4);
     ui->toolBox->setCurrentIndex(0);
 
@@ -37,6 +40,7 @@ MainWindow::~MainWindow()
     m_WolframObject->close();
     delete m_WolframObject;
 
+    delete m_PlotDrawing;
     delete ui;
     delete m_ParametersWidget;
 }
@@ -155,10 +159,6 @@ void MainWindow::on_pushButton_4_pressed()
 
     if (m_WolframObject->open())
     {
-        QCustomPlot* customPlot = ui->ResultGraphic;
-
-        customPlot->setRangeDrag(Qt::Horizontal | Qt::Vertical);
-        customPlot->setRangeZoom(Qt::Horizontal | Qt::Vertical);
         //пішла жара
 
         QVector<double> x(1001), y(1001); // initialize with entries 0..100
@@ -167,16 +167,9 @@ void MainWindow::on_pushButton_4_pressed()
           x[i] = i/50.0 - 10; // x goes from -10 to 10
           y[i] = cos(x[i]); // let's plot a quadratic function
         }
-        // create graph and assign data to it:
-        customPlot->addGraph();
-        customPlot->graph(0)->setData(x, y);
-        // give the axes some labels:
-        customPlot->xAxis->setLabel("x");
-        customPlot->yAxis->setLabel("y");
-        // set axes ranges, so we see all data:
-        customPlot->xAxis->setRange(-10, 10);
-        customPlot->yAxis->setRange(-10, 10);
-        customPlot->replot();
+
+        m_PlotDrawing->SetBoundary(-10, 10, 10, -10);
+        m_PlotDrawing->DrawVectorPoints(x, y, "x", "t");
     }
 
     ui->ResultGraphic->setVisible(true);
@@ -222,4 +215,14 @@ void MainWindow::on_pushButton_8_pressed()
 void MainWindow::on_pushButton_9_pressed()
 {
     ui->toolBox->setCurrentIndex(4);
+}
+
+void MainWindow::on_radioButtonInverseProblem_2_pressed()
+{
+    ui->widget_23->setEnabled(false);
+}
+
+void MainWindow::on_radioButtonDirectProblem_2_pressed()
+{
+    ui->widget_23->setEnabled(true);
 }

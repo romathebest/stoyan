@@ -41,8 +41,10 @@ namespace mathmod
 	};
 
 	template <typename T>
-	Range<T>::Range()
-		: min(0), max(0), param("")
+    Range<T>::Range():
+        min(0),
+        max(0),
+        param("")
 	{
 	}
 

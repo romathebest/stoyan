@@ -75,10 +75,11 @@ namespace mathmod
     string Point<T>::toString()
     {
         string str = "";
-        for(unsigned int i = 0; i < m_Vector.size(); i++ )
+        for(unsigned int i = 0; i < m_Vector.size() - 1; i++ )
         {
             str += m_Vector[i] +", ";
         }
+        str += m_Vector[m_Vector.size() - 1];
         return str;
     }
 

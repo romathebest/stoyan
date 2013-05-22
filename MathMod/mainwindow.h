@@ -8,6 +8,7 @@
 #include <Widgets/parametrswidget.h>
 #include <Widgets/areawidget.h>
 #include <Widgets/observationpointwidget.h>
+#include <Widgets/plotdrawing.h>
 
 #include <Matmod/System.h>
 #include <Matmod/passport.h>
@@ -59,6 +60,10 @@ private slots:
 
     void on_pushButton_9_pressed();
 
+    void on_radioButtonInverseProblem_2_pressed();
+
+    void on_radioButtonDirectProblem_2_pressed();
+
 private:
     Ui::MainWindow *ui;
     ParametrsWidget *m_ParametersWidget;
@@ -66,6 +71,7 @@ private:
     ObservationPointWidget *m_ObservationPointWidget;
     dialogChooseExistProcess* m_DialogGetProcess;
 
+    PlotDrawing* m_PlotDrawing;
     WolframObject* m_WolframObject;
     IConverterObject *m_PassportObject;
     System *m_System;
