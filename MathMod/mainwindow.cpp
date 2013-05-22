@@ -6,7 +6,9 @@
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
-    m_AreaWidget(NULL), m_ObservationPointWidget(NULL)
+    m_AreaWidget(NULL),
+    m_ObservationPointWidget(NULL),
+    m_DialogGetProcess(NULL)
 {
     ui->setupUi(this);
     m_ParametersWidget = new ParametrsWidget(ui->widget_4);
@@ -14,6 +16,17 @@ MainWindow::MainWindow(QWidget *parent) :
 
     m_System = new System();
     m_PassportObject = new Passport(m_System);
+
+    ui->widget_2->setVisible(false);
+    ui->widget_19->setVisible(false);
+    m_DisableProcessInput();
+}
+
+void MainWindow::m_DisableProcessInput()
+{
+    ui->widget_9->setEnabled(false);
+    ui->widget_10->setEnabled(false);
+    ui->widget_15->setEnabled(false);
 }
 
 MainWindow::~MainWindow()
@@ -115,4 +128,45 @@ void MainWindow::rewritePassport()
     area += "\n";
 
     ui->labelPassport->setText(procces + difOperator + problemType + controlType + area);
+}
+
+void MainWindow::writePassportFromExistTask(QString text)
+{
+    ui->labelPassport->setText(text);
+}
+
+void MainWindow::on_pushButton_3_pressed()
+{
+    ui->widget_2->setVisible(true);
+}
+
+void MainWindow::on_pushButton_4_pressed()
+{
+    ui->widget_19->setVisible(true);
+}
+
+void MainWindow::on_pushButton_6_pressed()
+{
+    ui->widget_9->setEnabled(true);
+    ui->widget_10->setEnabled(true);
+    ui->widget_15->setEnabled(true);
+}
+
+void MainWindow::on_pushButton_7_pressed()
+{
+    m_DisableProcessInput();
+    m_DialogGetProcess = new dialogChooseExistProcess();
+
+    bool cond;
+    cond = connect(m_DialogGetProcess,SIGNAL(sendTask(QString)),
+                   this,SLOT(writePassportFromExistTask(QString)));
+
+    Q_ASSERT(cond);
+
+    if( m_DialogGetProcess->exec() == QDialog::Accepted )
+    {
+        ui->widget_2->setVisible(true);
+    }
+    else return;
+
 }

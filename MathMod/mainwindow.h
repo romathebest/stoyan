@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "dialogchooseexistprocess.h"
 
 #include <Widgets/parametrswidget.h>
 #include <Widgets/areawidget.h>
@@ -24,6 +25,8 @@ class MainWindow : public QMainWindow
     
 public:
     explicit MainWindow(QWidget *parent = 0);
+    void m_DisableProcessInput();
+
     ~MainWindow();
 private slots:
     
@@ -33,7 +36,6 @@ private slots:
 
     void on_pushButton_5_pressed();
 
-
     void on_radioButtonDirectProblem_pressed();
 
     void on_radioButtonInverseProblem_pressed();
@@ -42,11 +44,22 @@ private slots:
 
     void rewritePassport();
 
+    void writePassportFromExistTask(QString text);
+
+    void on_pushButton_3_pressed();
+
+    void on_pushButton_4_pressed();
+
+    void on_pushButton_6_pressed();
+
+    void on_pushButton_7_pressed();
+
 private:
     Ui::MainWindow *ui;
     ParametrsWidget *m_ParametersWidget;
     AreaWidget *m_AreaWidget;
     ObservationPointWidget *m_ObservationPointWidget;
+    dialogChooseExistProcess* m_DialogGetProcess;
 
     IConverterObject *m_PassportObject;
     System *m_System;

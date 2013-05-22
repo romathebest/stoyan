@@ -24,7 +24,8 @@ SOURCES += main.cpp\
     Widgets/observationpointwidget.cpp \
     Widgets/areawidget.cpp \
     Matmod/passport.cpp \
-    Matmod/wolframobject.cpp
+    Matmod/wolframobject.cpp \
+    dialogchooseexistprocess.cpp
 
 HEADERS  += mainwindow.h \
     Matmod/System.h \
@@ -39,8 +40,11 @@ HEADERS  += mainwindow.h \
     Widgets/observationpointwidget.h \
     Widgets/areawidget.h \
     Matmod/passport.h \
-    Matmod/wolframobject.h
+    Matmod/wolframobject.h \
+    dialogchooseexistprocess.h
 
-LIBS += C:/Qt/Qt5.0.1/Tools/MinGW/i686-w64-mingw32/lib/ml32i3m.lib
+#LIBS += C:/Qt/Qt5.0.1/Tools/MinGW/i686-w64-mingw32/lib/ml32i3m.lib
+LIBS += E:/QT/5.0.1/Tools/MinGW/i686-w64-mingw32/lib/ml32i3m.lib
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    dialogchooseexistprocess.ui

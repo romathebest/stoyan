@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>729</width>
+    <width>1566</width>
     <height>503</height>
    </rect>
   </property>
@@ -50,7 +50,7 @@
             <x>0</x>
             <y>0</y>
             <width>432</width>
-            <height>193</height>
+            <height>232</height>
            </rect>
           </property>
           <property name="toolTip">
@@ -116,7 +116,7 @@
             <x>0</x>
             <y>0</y>
             <width>415</width>
-            <height>288</height>
+            <height>418</height>
            </rect>
           </property>
           <attribute name="label">
@@ -134,16 +134,61 @@
              <property name="minimumSize">
               <size>
                <width>0</width>
-               <height>270</height>
+               <height>400</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
                <width>16777215</width>
-               <height>270</height>
+               <height>400</height>
               </size>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_11">
+              <item>
+               <widget class="QWidget" name="widget_20" native="true">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>50</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>50</height>
+                 </size>
+                </property>
+                <layout class="QHBoxLayout" name="horizontalLayout_13">
+                 <item>
+                  <widget class="QPushButton" name="pushButton_6">
+                   <property name="text">
+                    <string>Явно</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="pushButton_7">
+                   <property name="text">
+                    <string>Вибрати </string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="pushButton_8">
+                   <property name="text">
+                    <string>Задати функцію Гріна</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
               <item>
                <widget class="QWidget" name="widget_9" native="true">
                 <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -280,6 +325,7 @@
              <zorder>widget_15</zorder>
              <zorder>widget_9</zorder>
              <zorder>widget_10</zorder>
+             <zorder>widget_20</zorder>
             </widget>
            </item>
           </layout>
@@ -290,7 +336,7 @@
             <x>0</x>
             <y>0</y>
             <width>432</width>
-            <height>193</height>
+            <height>232</height>
            </rect>
           </property>
           <attribute name="label">
@@ -311,7 +357,7 @@
                    <x>0</x>
                    <y>0</y>
                    <width>394</width>
-                   <height>99</height>
+                   <height>138</height>
                   </rect>
                  </property>
                  <layout class="QVBoxLayout" name="verticalLayout_9">
@@ -372,7 +418,7 @@
             <x>0</x>
             <y>0</y>
             <width>432</width>
-            <height>193</height>
+            <height>232</height>
            </rect>
           </property>
           <attribute name="label">
@@ -390,7 +436,7 @@
             <x>0</x>
             <y>0</y>
             <width>432</width>
-            <height>193</height>
+            <height>232</height>
            </rect>
           </property>
           <attribute name="label">
@@ -404,16 +450,48 @@
          </widget>
         </widget>
        </item>
+       <item>
+        <widget class="QWidget" name="widget_18" native="true">
+         <layout class="QHBoxLayout" name="horizontalLayout_12">
+          <item>
+           <widget class="QPushButton" name="pushButton_3">
+            <property name="text">
+             <string>Показати паспорт</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_4">
+            <property name="text">
+             <string>Побудувати розв'язок</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
       </layout>
      </widget>
     </item>
     <item>
      <widget class="QWidget" name="widget_2" native="true">
       <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+       <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>260</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>260</width>
+        <height>16777215</height>
+       </size>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_6">
        <item>
@@ -439,6 +517,47 @@
       </layout>
      </widget>
     </item>
+    <item>
+     <widget class="QWidget" name="widget_19" native="true">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_10">
+       <item>
+        <widget class="QGraphicsView" name="graphicsView">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>580</width>
+           <height>0</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <spacer name="horizontalSpacer_4">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
    </layout>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -446,7 +565,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>729</width>
+     <width>1566</width>
      <height>21</height>
     </rect>
    </property>
