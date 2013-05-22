@@ -2,9 +2,11 @@
 
 namespace mathmod
 {
-	System::System(void)
-		: m_Parameters(0), 
-        m_Process(""), m_DifOperator(""), m_RightSideOfEquation("")
+	System::System(void):  
+        m_Process(""),
+        m_DifOperator(""),
+        m_RightSideOfEquation(""),
+        m_Parameters(0)
 	{
 	}
 
@@ -76,7 +78,7 @@ namespace mathmod
 
     int System::numOutsideAreaPoints() const
     {
-
+        return 0;
     }
 
     void System::setProblemType(ProblemType type)

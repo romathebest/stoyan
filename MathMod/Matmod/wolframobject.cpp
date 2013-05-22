@@ -24,12 +24,16 @@ namespace mathmod
         "yResult[x_, t_] := yInfinity[x,t] + y0[x, t] + yg[x, t];"
     };
 
-    WolframObject::WolframObject(ISystem *system)
+    WolframObject::WolframObject(System *system):
+        m_IsOpened(false)
     {
     }
 
     bool WolframObject::open()
     {
+        if (m_IsOpened)
+            return true;
+
         int error;
         m_LibraryEnvironment = MLInitialize(0);
 
@@ -48,6 +52,7 @@ namespace mathmod
             return false;
         }
 
+        m_IsOpened = true;
         return true;
     }
 
@@ -56,6 +61,7 @@ namespace mathmod
         MLClose(m_WolframLink);
         MLDeinitialize(m_LibraryEnvironment);
 
+        m_IsOpened = false;
         return true;
     }
 

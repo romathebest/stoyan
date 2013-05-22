@@ -1,8 +1,10 @@
 #ifndef WOLFRAMOBJECT_H
 #define WOLFRAMOBJECT_H
 
-#include "mathmod.h"
+//#include "mathmod.h"
 #include "mathlink.h"
+
+#include "Matmod/System.h"
 
 #include <string>
 
@@ -14,7 +16,7 @@ namespace mathmod
     class WolframObject
     {
     public:
-        WolframObject(ISystem *system);
+        WolframObject(System* system);
         bool open();
         bool close();
         const char* execute();
@@ -22,6 +24,8 @@ namespace mathmod
         char* buildInput();
     private:
         ISystem *pSystem;
+
+        bool m_IsOpened;
 
         MLENV m_LibraryEnvironment;
         MLINK m_WolframLink;

@@ -8,7 +8,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow),
     m_AreaWidget(NULL),
     m_ObservationPointWidget(NULL),
-    m_DialogGetProcess(NULL)
+    m_DialogGetProcess(NULL),
+    m_WolframObject(NULL)
 {
     ui->setupUi(this);
     m_ParametersWidget = new ParametrsWidget(ui->widget_4);
@@ -18,19 +19,24 @@ MainWindow::MainWindow(QWidget *parent) :
     m_PassportObject = new Passport(m_System);
 
     ui->widget_2->setVisible(false);
-    ui->widget_19->setVisible(false);
-    m_DisableProcessInput();
+    ui->ResultGraphic->setVisible(false);
+    DisableProcessInput();
 }
 
-void MainWindow::m_DisableProcessInput()
+void MainWindow::DisableProcessInput()
 {
-    ui->widget_9->setEnabled(false);
+    ui->widget_GrinInput->setEnabled(false);
     ui->widget_10->setEnabled(false);
+    ui->widget_11->setEnabled(false);
+    ui->widget_12->setEnabled(false);
     ui->widget_15->setEnabled(false);
 }
 
 MainWindow::~MainWindow()
 {
+    m_WolframObject->close();
+    delete m_WolframObject;
+
     delete ui;
     delete m_ParametersWidget;
 }
@@ -119,7 +125,7 @@ void MainWindow::rewritePassport()
     problemType += QString::fromStdString(m_PassportObject->problemType());
     problemType += "\n";
 
-    QString controlType = "Куруємо: ";
+    QString controlType = "Керуємо: ";
     controlType += QString::fromStdString(m_PassportObject->controlType());
     controlType += "\n";
 
@@ -142,19 +148,53 @@ void MainWindow::on_pushButton_3_pressed()
 
 void MainWindow::on_pushButton_4_pressed()
 {
-    ui->widget_19->setVisible(true);
+    if (m_WolframObject == 0)
+    {
+        m_WolframObject = new WolframObject(m_System);
+    }
+
+    if (m_WolframObject->open())
+    {
+        QCustomPlot* customPlot = ui->ResultGraphic;
+
+        customPlot->setRangeDrag(Qt::Horizontal | Qt::Vertical);
+        customPlot->setRangeZoom(Qt::Horizontal | Qt::Vertical);
+        //пішла жара
+
+        QVector<double> x(1001), y(1001); // initialize with entries 0..100
+        for (int i=0; i<1001; ++i)
+        {
+          x[i] = i/50.0 - 10; // x goes from -10 to 10
+          y[i] = cos(x[i]); // let's plot a quadratic function
+        }
+        // create graph and assign data to it:
+        customPlot->addGraph();
+        customPlot->graph(0)->setData(x, y);
+        // give the axes some labels:
+        customPlot->xAxis->setLabel("x");
+        customPlot->yAxis->setLabel("y");
+        // set axes ranges, so we see all data:
+        customPlot->xAxis->setRange(-10, 10);
+        customPlot->yAxis->setRange(-10, 10);
+        customPlot->replot();
+    }
+
+    ui->ResultGraphic->setVisible(true);
+
 }
 
 void MainWindow::on_pushButton_6_pressed()
 {
-    ui->widget_9->setEnabled(true);
+    DisableProcessInput();
     ui->widget_10->setEnabled(true);
+    ui->widget_11->setEnabled(true);
+    ui->widget_12->setEnabled(true);
     ui->widget_15->setEnabled(true);
 }
 
 void MainWindow::on_pushButton_7_pressed()
 {
-    m_DisableProcessInput();
+    DisableProcessInput();
     m_DialogGetProcess = new dialogChooseExistProcess();
 
     bool cond;
@@ -169,4 +209,17 @@ void MainWindow::on_pushButton_7_pressed()
     }
     else return;
 
+}
+
+void MainWindow::on_pushButton_8_pressed()
+{
+    DisableProcessInput();
+
+    ui->widget_GrinInput->setEnabled(true);
+    ui->widget_15->setEnabled(true);
+}
+
+void MainWindow::on_pushButton_9_pressed()
+{
+    ui->toolBox->setCurrentIndex(4);
 }

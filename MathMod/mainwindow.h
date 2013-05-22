@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "dialogchooseexistprocess.h"
+#include "qcustomplot.h"
 
 #include <Widgets/parametrswidget.h>
 #include <Widgets/areawidget.h>
@@ -11,7 +12,7 @@
 #include <Matmod/System.h>
 #include <Matmod/passport.h>
 #include <Matmod/mathmod.h>
-
+#include "Matmod/wolframobject.h"
 
 using namespace mathmod;
 
@@ -25,7 +26,7 @@ class MainWindow : public QMainWindow
     
 public:
     explicit MainWindow(QWidget *parent = 0);
-    void m_DisableProcessInput();
+    void DisableProcessInput();
 
     ~MainWindow();
 private slots:
@@ -54,6 +55,10 @@ private slots:
 
     void on_pushButton_7_pressed();
 
+    void on_pushButton_8_pressed();
+
+    void on_pushButton_9_pressed();
+
 private:
     Ui::MainWindow *ui;
     ParametrsWidget *m_ParametersWidget;
@@ -61,6 +66,7 @@ private:
     ObservationPointWidget *m_ObservationPointWidget;
     dialogChooseExistProcess* m_DialogGetProcess;
 
+    WolframObject* m_WolframObject;
     IConverterObject *m_PassportObject;
     System *m_System;
 };
