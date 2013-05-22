@@ -1,9 +1,9 @@
-#include "wolframobject.h"
+#include "wolframconnector.h"
 
 namespace mathmod
 {
 
-    char *WolframObject::directDiscretionProblem[] = {
+    char *WolframConnector::directDiscretionProblem[] = {
         "lengthM0 = Length[M0x]; lengthMg = Length[Mgx];\n",
         "lengthL0 = Length[L0x]; lengthLg = Length[Lgx];\n",
         "H[x_] := Piecewise[{{0, x < 0}, {1, x >= 0}}];\n",
@@ -24,12 +24,17 @@ namespace mathmod
         "yResult[x_, t_] := yInfinity[x,t] + y0[x, t] + yg[x, t];"
     };
 
-    WolframObject::WolframObject(System *system):
+    WolframConnector::WolframConnector(System *system):
         m_IsOpened(false)
     {
     }
 
-    bool WolframObject::open()
+    bool WolframConnector::isOpen()
+    {
+        return m_IsOpened;
+    }
+
+    bool WolframConnector::open()
     {
         if (m_IsOpened)
             return true;
@@ -56,7 +61,7 @@ namespace mathmod
         return true;
     }
 
-    bool WolframObject::close()
+    bool WolframConnector::close()
     {
         MLClose(m_WolframLink);
         MLDeinitialize(m_LibraryEnvironment);
@@ -65,12 +70,12 @@ namespace mathmod
         return true;
     }
 
-    char* WolframObject::buildInput()
+    char* WolframConnector::buildInput()
     {
         return "";
     }
 
-    const char* WolframObject::execute()
+    const char* WolframConnector::execute()
     {
         const char* inputString = buildInput();
         inputString = "Cos[2]";//example

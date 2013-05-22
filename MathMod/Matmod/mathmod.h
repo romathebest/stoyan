@@ -74,6 +74,12 @@ namespace mathmod
         //virtual int numConditions() const = 0;
         //virtual int numOutsideAreaPoints() const = 0;
     };
+
+    class IWolframObject
+    {
+    public:
+        virtual string toWolfram();
+    };
 }
 
 #endif //_MATHMOD_H_

@@ -13,13 +13,14 @@ using std::string;
 
 namespace mathmod
 {
-    class WolframObject
+    class WolframConnector
     {
     public:
-        WolframObject(System* system);
+        WolframConnector(System* system);
         bool open();
         bool close();
         const char* execute();
+        bool isOpen();
     private:
         char* buildInput();
     private:

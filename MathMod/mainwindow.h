@@ -13,7 +13,7 @@
 #include <Matmod/System.h>
 #include <Matmod/passport.h>
 #include <Matmod/mathmod.h>
-#include "Matmod/wolframobject.h"
+#include "Matmod/wolframconnector.h"
 
 using namespace mathmod;
 
@@ -48,10 +48,6 @@ private slots:
 
     void writePassportFromExistTask(QString text);
 
-    void on_pushButton_3_pressed();
-
-    void on_pushButton_4_pressed();
-
     void on_pushButton_6_pressed();
 
     void on_pushButton_7_pressed();
@@ -64,6 +60,12 @@ private slots:
 
     void on_radioButtonDirectProblem_2_pressed();
 
+    void on_pushButtonConnectWithWolfram_clicked();
+
+    void on_pushButtonSolve_clicked();
+
+    void on_pushButtonBuildPassport_clicked();
+
 private:
     Ui::MainWindow *ui;
     ParametrsWidget *m_ParametersWidget;
@@ -72,7 +74,7 @@ private:
     dialogChooseExistProcess* m_DialogGetProcess;
 
     PlotDrawing* m_PlotDrawing;
-    WolframObject* m_WolframObject;
+    WolframConnector* m_WolframObject;
     IConverterObject *m_PassportObject;
     System *m_System;
 };

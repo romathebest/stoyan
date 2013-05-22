@@ -14,8 +14,8 @@
    <string>Моделюючий комплекс</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QHBoxLayout" name="horizontalLayout">
-    <item>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
      <widget class="QWidget" name="widget" native="true">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
@@ -37,6 +37,58 @@
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
+        <widget class="QGroupBox" name="groupBox">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>50</height>
+          </size>
+         </property>
+         <property name="title">
+          <string>GroupBox</string>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_19">
+          <item>
+           <widget class="QPushButton" name="pushButtonConnectWithWolfram">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string>Підключити Wolfram</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="labelWolframStatus">
+            <property name="font">
+             <font>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
+            <property name="layoutDirection">
+             <enum>Qt::LeftToRight</enum>
+            </property>
+            <property name="text">
+             <string>Wolfram Mathematica 8 не підключена</string>
+            </property>
+            <property name="scaledContents">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
         <widget class="QToolBox" name="toolBox">
          <property name="styleSheet">
           <string notr="true"/>
@@ -50,7 +102,7 @@
             <x>0</x>
             <y>0</y>
             <width>432</width>
-            <height>232</height>
+            <height>170</height>
            </rect>
           </property>
           <property name="toolTip">
@@ -114,7 +166,7 @@
           <property name="geometry">
            <rect>
             <x>0</x>
-            <y>0</y>
+            <y>-186</y>
             <width>415</width>
             <height>418</height>
            </rect>
@@ -355,7 +407,7 @@
             <x>0</x>
             <y>0</y>
             <width>432</width>
-            <height>232</height>
+            <height>170</height>
            </rect>
           </property>
           <attribute name="label">
@@ -376,7 +428,7 @@
                    <x>0</x>
                    <y>0</y>
                    <width>394</width>
-                   <height>138</height>
+                   <height>76</height>
                   </rect>
                  </property>
                  <layout class="QVBoxLayout" name="verticalLayout_9">
@@ -437,7 +489,7 @@
             <x>0</x>
             <y>0</y>
             <width>432</width>
-            <height>232</height>
+            <height>170</height>
            </rect>
           </property>
           <attribute name="label">
@@ -493,7 +545,7 @@
             <x>0</x>
             <y>0</y>
             <width>432</width>
-            <height>232</height>
+            <height>170</height>
            </rect>
           </property>
           <attribute name="label">
@@ -585,14 +637,14 @@
         <widget class="QWidget" name="widget_18" native="true">
          <layout class="QHBoxLayout" name="horizontalLayout_12">
           <item>
-           <widget class="QPushButton" name="pushButton_3">
+           <widget class="QPushButton" name="pushButtonBuildPassport">
             <property name="text">
              <string>Показати паспорт</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="pushButton_4">
+           <widget class="QPushButton" name="pushButtonSolve">
             <property name="text">
              <string>Побудувати розв'язок</string>
             </property>
@@ -604,7 +656,7 @@
       </layout>
      </widget>
     </item>
-    <item>
+    <item row="0" column="1">
      <widget class="QWidget" name="widget_2" native="true">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
@@ -648,7 +700,7 @@
       </layout>
      </widget>
     </item>
-    <item>
+    <item row="0" column="2">
      <widget class="QCustomPlot" name="ResultGraphic" native="true">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
@@ -665,7 +717,7 @@
       <layout class="QVBoxLayout" name="verticalLayout_10"/>
      </widget>
     </item>
-    <item>
+    <item row="0" column="3">
      <spacer name="horizontalSpacer_4">
       <property name="orientation">
        <enum>Qt::Horizontal</enum>

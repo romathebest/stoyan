@@ -24,6 +24,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->widget_2->setVisible(false);
     ui->ResultGraphic->setVisible(false);
     DisableProcessInput();
+
+    m_WolframObject = new WolframConnector(m_System);
+
+    ui->pushButtonSolve->setEnabled(false);
 }
 
 void MainWindow::DisableProcessInput()
@@ -145,36 +149,6 @@ void MainWindow::writePassportFromExistTask(QString text)
     ui->labelPassport->setText(text);
 }
 
-void MainWindow::on_pushButton_3_pressed()
-{
-    ui->widget_2->setVisible(true);
-}
-
-void MainWindow::on_pushButton_4_pressed()
-{
-    if (m_WolframObject == 0)
-    {
-        m_WolframObject = new WolframObject(m_System);
-    }
-
-    if (m_WolframObject->open())
-    {
-        //пішла жара
-
-        QVector<double> x(1001), y(1001); // initialize with entries 0..100
-        for (int i=0; i<1001; ++i)
-        {
-          x[i] = i/50.0 - 10; // x goes from -10 to 10
-          y[i] = cos(x[i]); // let's plot a quadratic function
-        }
-
-        m_PlotDrawing->SetBoundary(-10, 10, 10, -10);
-        m_PlotDrawing->DrawVectorPoints(x, y, "x", "t");
-    }
-
-    ui->ResultGraphic->setVisible(true);
-
-}
 
 void MainWindow::on_pushButton_6_pressed()
 {
@@ -225,4 +199,42 @@ void MainWindow::on_radioButtonInverseProblem_2_pressed()
 void MainWindow::on_radioButtonDirectProblem_2_pressed()
 {
     ui->widget_23->setEnabled(true);
+}
+
+void MainWindow::on_pushButtonConnectWithWolfram_clicked()
+{
+    if(m_WolframObject->open())
+    {
+        ui->labelWolframStatus->setText("З'єднання встановлено.");
+        ui->pushButtonSolve->setEnabled(true);
+    }
+    else
+    {
+        ui->labelWolframStatus->setText("Не вдалося встановити з'єднання");
+    }
+}
+
+void MainWindow::on_pushButtonSolve_clicked()
+{
+    if (m_WolframObject->isOpen())
+    {
+        //пішла жара
+
+        QVector<double> x(1001), y(1001); // initialize with entries 0..100
+        for (int i=0; i<1001; ++i)
+        {
+          x[i] = i/50.0 - 10; // x goes from -10 to 10
+          y[i] = cos(x[i]); // let's plot a quadratic function
+        }
+
+        m_PlotDrawing->SetBoundary(-10, 10, 10, -10);
+        m_PlotDrawing->DrawVectorPoints(x, y, "x", "t");
+    }
+
+    ui->ResultGraphic->setVisible(true);
+}
+
+void MainWindow::on_pushButtonBuildPassport_clicked()
+{
+    ui->widget_2->setVisible(true);
 }
