@@ -7,7 +7,6 @@
 
 #include <Widgets/parametrswidget.h>
 #include <Widgets/areawidget.h>
-#include <Widgets/fixarea.h>
 #include <Widgets/observationpointwidget.h>
 #include <Widgets/plotdrawing.h>
 
@@ -15,7 +14,6 @@
 #include <Matmod/passport.h>
 #include <Matmod/mathmod.h>
 #include "Matmod/wolframconnector.h"
-#include <Matmod/wolframconverter.h>
 
 using namespace mathmod;
 
@@ -26,14 +24,14 @@ class MainWindow;
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
-    
+
 public:
     explicit MainWindow(QWidget *parent = 0);
     void DisableProcessInput();
 
     ~MainWindow();
 private slots:
-    
+
     void on_pushButton_pressed();
 
     void on_pushButton_2_clicked();
@@ -47,7 +45,6 @@ private slots:
 //    void on_comboBoxControlType_activated(int index);
 
     void rewritePassport();
-    void rewriteWolframPassport();
 
     void writePassportFromExistTask(QString text);
 
@@ -69,10 +66,6 @@ private slots:
 
     void on_pushButtonBuildPassport_clicked();
 
-    void on_pageParameters_destroyed();
-
-    void activateResults();
-
 private:
     bool* m_Control;
     Ui::MainWindow *ui;
@@ -86,10 +79,7 @@ private:
     PlotDrawing* m_PlotDrawing;
     WolframConnector* m_WolframObject;
     IConverterObject *m_PassportObject;
-    IConverterObject *m_WolframConverter;
     System *m_System;
-
-    FixArea *m_FixPointsWidget;
 };
 
 #endif // MAINWINDOW_H
