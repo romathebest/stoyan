@@ -39,7 +39,9 @@ SOURCES += main.cpp\
     3rdparty/QCustomPlot/include/qcustomplot.cpp \
     Widgets/plotdrawing.cpp \
     Matmod/wolframconnector.cpp \
-    Matmod/wolframconverter.cpp
+    Matmod/wolframconverter.cpp \
+    Widgets/fixwidget.cpp \
+    Widgets/fixarea.cpp
 
 HEADERS  += mainwindow.h \
     Matmod/System.h \
@@ -58,10 +60,11 @@ HEADERS  += mainwindow.h \
     3rdparty/QCustomPlot/include/qcustomplot.h \
     Widgets/plotdrawing.h \
     Matmod/wolframconnector.h \
-    Matmod/wolframconverter.h
+    Matmod/wolframconverter.h \
+    Widgets/fixwidget.h \
+    Widgets/fixarea.h
 
-LIBS += C:/Qt/Qt5.0.1/Tools/MinGW/i686-w64-mingw32/lib/ml32i3m.lib
-#LIBS += E:/QT/5.0.1/Tools/MinGW/i686-w64-mingw32/lib/ml32i3m.lib
+LIBS +=  ../lib/ml32i3m.lib
 
 FORMS    += mainwindow.ui \
     dialogchooseexistprocess.ui

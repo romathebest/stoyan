@@ -7,6 +7,7 @@
 
 #include <Widgets/parametrswidget.h>
 #include <Widgets/areawidget.h>
+#include <Widgets/fixarea.h>
 #include <Widgets/observationpointwidget.h>
 #include <Widgets/plotdrawing.h>
 
@@ -66,6 +67,10 @@ private slots:
 
     void on_pushButtonBuildPassport_clicked();
 
+    void on_pageParameters_destroyed();
+
+    void activateResults();
+
 private:
     Ui::MainWindow *ui;
     ParametrsWidget *m_ParametersWidget;
@@ -77,6 +82,8 @@ private:
     WolframConnector* m_WolframObject;
     IConverterObject *m_PassportObject;
     System *m_System;
+
+    FixArea *m_FixPointsWidget;
 };
 
 #endif // MAINWINDOW_H

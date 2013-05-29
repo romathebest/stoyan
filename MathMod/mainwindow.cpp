@@ -13,7 +13,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    m_PlotDrawing = new PlotDrawing(ui->ResultGraphic);
+    //m_PlotDrawing = new PlotDrawing(ui->ResultGraphic);
 
     m_ParametersWidget = new ParametrsWidget(ui->widget_4);
     ui->toolBox->setCurrentIndex(0);
@@ -28,6 +28,8 @@ MainWindow::MainWindow(QWidget *parent) :
     m_WolframObject = new WolframConnector(m_System);
 
     ui->pushButtonSolve->setEnabled(false);
+
+    connect(ui->pushButton_3,SIGNAL(clicked()),this,SLOT(activateResults()));
 }
 
 void MainWindow::DisableProcessInput()
@@ -58,6 +60,8 @@ void MainWindow::on_pushButton_pressed()
     m_System->setParameters(m_ParametersWidget->parameters());
 
     m_AreaWidget = new AreaWidget(m_ParametersWidget->parameters(), ui->widget_17);
+
+    m_FixPointsWidget = new FixArea(m_ParametersWidget->parameters(), ui->widget_26);
   //  ui->widgetArea->update();
     ui->toolBox->setCurrentIndex(1);
 
@@ -216,7 +220,7 @@ void MainWindow::on_pushButtonConnectWithWolfram_clicked()
 
 void MainWindow::on_pushButtonSolve_clicked()
 {
-    if (m_WolframObject->isOpen())
+    /*if (m_WolframObject->isOpen())
     {
         //пішла жара
 
@@ -231,10 +235,27 @@ void MainWindow::on_pushButtonSolve_clicked()
         m_PlotDrawing->DrawVectorPoints(x, y, "x", "t");
     }
 
+    ui->ResultGraphic->setVisible(true);*/
+
     ui->ResultGraphic->setVisible(true);
 }
 
 void MainWindow::on_pushButtonBuildPassport_clicked()
 {
     ui->widget_2->setVisible(true);
+}
+
+void MainWindow::activateResults()
+{
+    // apply mathematica
+    QString path("../results/images.jpeg");
+    QImage image(path);
+    ui->image->setPixmap(QPixmap::fromImage(image));
+    ui->image->adjustSize();
+    ui->image->setScaledContents(true);
+}
+
+void MainWindow::on_pageParameters_destroyed()
+{
+    //
 }
