@@ -94,7 +94,7 @@
           <string notr="true"/>
          </property>
          <property name="currentIndex">
-          <number>4</number>
+          <number>1</number>
          </property>
          <widget class="QWidget" name="pageParameters">
           <property name="geometry">
@@ -166,7 +166,7 @@
           <property name="geometry">
            <rect>
             <x>0</x>
-            <y>-186</y>
+            <y>-111</y>
             <width>415</width>
             <height>418</height>
            </rect>
@@ -290,7 +290,7 @@
                      </widget>
                     </item>
                     <item>
-                     <widget class="QLineEdit" name="lineEditY_2"/>
+                     <widget class="QLineEdit" name="lineEditGrin"/>
                     </item>
                    </layout>
                   </widget>

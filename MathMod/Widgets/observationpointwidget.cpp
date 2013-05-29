@@ -63,6 +63,7 @@ vector<mathmod::Pointf> ObservationPointWidget::points()
         {
             p[j] = m_twPoints->item(i, j)->text().toFloat();
         }
+        observationPoints.push_back(p);
     }
 
     return observationPoints;

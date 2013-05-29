@@ -61,19 +61,43 @@ namespace mathmod
 		return m_RightSideOfEquation;
 	}
 		
-	void System::addCondition(const Condition& condition)
+    void System::addCondition(Pointf condition)
 	{
-		//m_Conditions.push_back(point);
+        if(condition[0] == m_Area[0].min)
+        {
+            m_InitialConditions.push_back(condition);
+        }
+        else
+        {
+            m_CurrentConditions.push_back(condition);
+        }
 	}
+
+    void System::setCondtion(vector<Pointf> conditions)
+    {
+        for(int i = 0; i < conditions.size(); i++)
+        {
+            addCondition(conditions[i]);
+        }
+    }
 
 	int System::numConditions() const
 	{
-		return m_InitialConditions.size() + m_BoundaryConditions.size() + m_CurrentConditions.size();
+        return 0;
+        //return m_InitialConditions.size() + m_BoundaryConditions.size() + m_CurrentConditions.size();
 	}
 
-    void System::addOutsideAreaPoint(const OutsideAreaPoint& point)
+    void System::addOutsideAreaPoint(const Pointf& point)
     {
+        m_LeftRightOutsideAreaPoints.push_back(point);
+    }
 
+    void System::setOutsideAreaPoint(vector<Pointf> conditions)
+    {
+        for(int i = 0; i < conditions.size(); i++)
+        {
+            addOutsideAreaPoint(conditions[i]);
+        }
     }
 
     int System::numOutsideAreaPoints() const
@@ -109,5 +133,25 @@ namespace mathmod
     Area System::getArea() const
     {
         return m_Area;
+    }
+
+    void System::setGrinFunction(const Function& func)
+    {
+        m_Grin = func;
+    }
+
+    Function System::getGrinFunction() const
+    {
+        return m_Grin;
+    }
+
+    vector<Pointf> System::getInitialConditions()
+    {
+        return m_InitialConditions;
+    }
+
+    vector<Pointf> System::getCurrentConditions()
+    {
+        return m_CurrentConditions;
     }
 }

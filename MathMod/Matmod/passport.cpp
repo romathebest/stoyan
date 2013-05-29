@@ -70,4 +70,14 @@ namespace mathmod
     {
         return pSystem->getArea().toString();
     }
+
+    string Passport::grinFunction() const
+    {
+        return pSystem->getGrinFunction();
+    }
+
+    string Passport::conditions()
+    {
+        return "undefinded";
+    }
 }

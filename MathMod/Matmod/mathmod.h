@@ -3,14 +3,16 @@
 
 #include "Area.h"
 #include "Point.h"
-#include "iostream"
+#include "iostream"\
+
+#include <vector>
 using std::string;
+using std::vector;
+
 
 namespace mathmod
 {
     typedef std::string Function;
-    typedef Pointf Condition;
-    typedef Pointf OutsideAreaPoint;
 
     enum ProblemType
     {
@@ -32,6 +34,9 @@ namespace mathmod
         virtual PointStr getParameters() const = 0;
         virtual int numParameters() const = 0;
 
+        virtual void setGrinFunction(const Function& func) = 0;
+        virtual Function getGrinFunction() const = 0;
+
         virtual void setProcess(const Function& func) = 0;
         virtual Function getProcess() const = 0;
 
@@ -47,10 +52,14 @@ namespace mathmod
         virtual void setControlType(ControlType type) = 0;
         virtual ControlType getControlType() = 0;
 
-        virtual void addCondition(const Condition& condition) = 0;
+        virtual void addCondition(Pointf condition) = 0;
+        virtual void setCondtion(vector<Pointf> conditions) = 0;
         virtual int numConditions() const = 0;
+        virtual vector<Pointf> getInitialConditions() = 0;
+        virtual vector<Pointf> getCurrentConditions() = 0;
 
-        virtual void addOutsideAreaPoint(const OutsideAreaPoint& point) = 0;
+        virtual void addOutsideAreaPoint(const Pointf& point) = 0;
+        virtual void setOutsideAreaPoint(vector<Pointf> conditions) = 0;
         virtual int numOutsideAreaPoints() const = 0;
 
         virtual  void setArea(const Area& area) = 0;
@@ -66,10 +75,14 @@ namespace mathmod
         virtual string differentialOperator() const = 0;
         virtual string rightSideOfEquation() const = 0;
 
+        virtual string grinFunction() const = 0;
+
         virtual string problemType() = 0;
         virtual string controlType() = 0;
 
         virtual string area() = 0;
+
+        virtual string conditions() = 0;
 
         //virtual int numConditions() const = 0;
         //virtual int numOutsideAreaPoints() const = 0;
