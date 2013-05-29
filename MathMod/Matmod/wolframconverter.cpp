@@ -1,4 +1,9 @@
 #include "wolframconverter.h"
+#include <string>
+#include <vector>
+
+using std::string;
+using std::vector;
 
 namespace mathmod
 {
@@ -9,7 +14,16 @@ namespace mathmod
 
     string WolframConverter::parameters() const
     {
-        return m_pSystem->getParameters().toString();
+        string res = "";
+        PointStr param = m_pSystem->getParameters();
+        int paramSize = param.size();
+
+        for(int i = 0; i < paramSize - 1; i++)
+        {
+            res += param[i] + "_ ,";
+        }
+        res += param[paramSize - 1] + "_";
+        return res;
     }
 
     int WolframConverter::numParameters() const
@@ -19,11 +33,7 @@ namespace mathmod
 
     string WolframConverter::process()
     {
-        string res = "y[";
-        res += parameters();
-        res += "] =";
-        res += m_pSystem->getProcess();
-        res += ";";
+        string res = "y[" + parameters() + "] =" + m_pSystem->getProcess() + ";\n";
         return  res;
     }
 
@@ -38,7 +48,7 @@ namespace mathmod
     }
     string WolframConverter::rightSideOfEquation() const
     {
-        return "";
+        return "u[x_, t_] := -((Pi^2 + 9)*Sin[t]*Sin[(Pi*x)/3])/9;";
     }
 
     string WolframConverter::problemType()
@@ -53,6 +63,68 @@ namespace mathmod
 
     string WolframConverter::area()
     {
+        int aresize = m_pSystem->getArea().size();
+        Area area = m_pSystem->getArea();
+        string areaString = "";
+        for(int i = 0; i < aresize; i++)
+        {
+            Rangef range = area[i];
 
+            areaString += range.param + "_min = " + Converter::toStr(range.min) + ";\n";
+            areaString += range.param + "_max = " + Converter::toStr(range.max) + ";\n";
+        }
+        return areaString;
+    }
+
+    string WolframConverter::grinFunction() const
+    {
+        string res = "G[" + parameters() + "] =" + m_pSystem->getGrinFunction() + ";\n";
+        return res;
+    }
+
+    string WolframConverter::bigString(vector<string> v)
+    {
+        string str = "";
+        for(int i = 0; i < v.size(); i++)
+        {
+            str += v[i];
+        }
+        return str;
+    }
+
+    string WolframConverter::buildCondtionString(string name, const vector<Pointf> condtions)
+    {
+        vector<string> conditionsVectorString;
+        PointStr parameters = m_pSystem->getParameters();
+        for(int i = 0; i < m_pSystem->numParameters(); i++)
+        {
+            conditionsVectorString.push_back(name + parameters[i] + " = {");
+        }
+        conditionsVectorString.push_back(name + "y = {");
+
+        for(int i = 0; i < condtions.size(); i++)
+        {
+            Pointf point = condtions[i];
+            for(int j = 0; j < point.size(); j++ )
+            {
+                if(i < condtions.size() - 1)
+                conditionsVectorString[j] += Converter::toStr(point[j]) + ", ";
+                else conditionsVectorString[j] += Converter::toStr(point[j]);
+            }
+
+        }
+
+        for(int i = 0; i < conditionsVectorString.size(); i++)
+        {
+            conditionsVectorString[i] += "};\n";
+        }
+
+        return bigString(conditionsVectorString);
+    }
+
+    string WolframConverter::conditions()
+    {
+        return buildCondtionString("L0",m_pSystem->getInitialConditions())
+                + buildCondtionString ("Lg", m_pSystem->getCurrentConditions());
     }
 }

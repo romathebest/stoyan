@@ -290,7 +290,7 @@
                      </widget>
                     </item>
                     <item>
-                     <widget class="QLineEdit" name="lineEditY_2"/>
+                     <widget class="QLineEdit" name="lineEditGrin"/>
                     </item>
                    </layout>
                   </widget>

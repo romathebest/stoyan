@@ -18,7 +18,14 @@ namespace mathmod
         virtual string problemType();
         virtual string controlType();
 
+        virtual string grinFunction() const;
+
         virtual string area();
+
+        virtual string conditions();
+    private:
+        string bigString(vector<string> v);
+        string buildCondtionString(string name, const vector<Pointf> condtions);
     private:
         ISystem *m_pSystem;
     };

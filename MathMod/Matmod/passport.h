@@ -17,10 +17,14 @@ namespace mathmod
         string differentialOperator() const;
         string rightSideOfEquation() const;
 
+        string grinFunction() const;
+
         string problemType();
-        string controlType();
+        string controlParam();
 
         string area();
+
+        string conditions();
     private:
         ISystem *pSystem;
     };

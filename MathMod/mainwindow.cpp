@@ -9,7 +9,8 @@ MainWindow::MainWindow(QWidget *parent) :
     m_AreaWidget(NULL),
     m_ObservationPointWidget(NULL),
     m_DialogGetProcess(NULL),
-    m_WolframObject(NULL)
+    m_WolframObject(NULL),
+    m_WolframConverter(NULL)
 {
     ui->setupUi(this);
 
@@ -26,6 +27,7 @@ MainWindow::MainWindow(QWidget *parent) :
     DisableProcessInput();
 
     m_WolframObject = new WolframConnector(m_System);
+    m_WolframConverter = new WolframConverter(m_System);
 
     ui->pushButtonSolve->setEnabled(false);
 
@@ -67,7 +69,8 @@ void MainWindow::on_pushButton_pressed()
 
     m_System->setArea(m_AreaWidget->area());
 
-    rewritePassport();
+   // rewritePassport();
+    rewriteWolframPassport();
 }
 
 void MainWindow::on_pushButton_2_clicked()
@@ -79,15 +82,19 @@ void MainWindow::on_pushButton_2_clicked()
 
     m_ObservationPointWidget = new ObservationPointWidget(m_AreaWidget->area(), ui->widget_6);
     ui->toolBox->setCurrentIndex(3);
-    rewritePassport();
+
+   // rewritePassport();
+    rewriteWolframPassport();
 }
 
 void MainWindow::on_pushButton_5_pressed()
 {
     m_System->setDifferentialOperator(ui->lineEditL->text().toStdString());
     m_System->setProcess(ui->lineEditY->text().toStdString());
+    m_System->setGrinFunction(ui->lineEditGrin->text().toStdString());
     ui->toolBox->setCurrentIndex(2);
-    rewritePassport();
+    rewriteWolframPassport();
+  //  rewritePassport();
 }
 
 
@@ -117,6 +124,15 @@ void MainWindow::on_comboBoxControlType_activated(int index)
          m_System->setControlType(mathmod::BOUNDARY_AND_INITIAL_CONDITIONS);
         break;
     }
+}
+
+void MainWindow::rewriteWolframPassport()
+{
+    QString proccess = QString::fromStdString(m_WolframConverter->process());
+    QString grin = QString::fromStdString(m_WolframConverter->grinFunction());
+    QString area = QString::fromStdString(m_WolframConverter->area());
+    QString condition = QString::fromStdString(m_WolframConverter->conditions());
+    ui->labelPassport->setText(proccess + grin + area + condition);
 }
 
 void MainWindow::rewritePassport()
@@ -192,7 +208,9 @@ void MainWindow::on_pushButton_8_pressed()
 
 void MainWindow::on_pushButton_9_pressed()
 {
+    m_System->setCondtion(m_ObservationPointWidget->points());
     ui->toolBox->setCurrentIndex(4);
+    rewriteWolframPassport();
 }
 
 void MainWindow::on_radioButtonInverseProblem_2_pressed()
@@ -242,7 +260,7 @@ void MainWindow::on_pushButtonSolve_clicked()
 
 void MainWindow::on_pushButtonBuildPassport_clicked()
 {
-    ui->widget_2->setVisible(true);
+    //ui->widget_2->setVisible(true);
 }
 
 void MainWindow::activateResults()

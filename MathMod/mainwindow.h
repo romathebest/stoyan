@@ -15,6 +15,7 @@
 #include <Matmod/passport.h>
 #include <Matmod/mathmod.h>
 #include "Matmod/wolframconnector.h"
+#include <Matmod/wolframconverter.h>
 
 using namespace mathmod;
 
@@ -43,9 +44,10 @@ private slots:
 
     void on_radioButtonInverseProblem_pressed();
 
-    void on_comboBoxControlType_activated(int index);
+//    void on_comboBoxControlType_activated(int index);
 
     void rewritePassport();
+    void rewriteWolframPassport();
 
     void writePassportFromExistTask(QString text);
 
@@ -72,15 +74,19 @@ private slots:
     void activateResults();
 
 private:
+    bool* m_Control;
     Ui::MainWindow *ui;
     ParametrsWidget *m_ParametersWidget;
     AreaWidget *m_AreaWidget;
     ObservationPointWidget *m_ObservationPointWidget;
+    ObservationPointWidget *m_PointWidgetU0;
+    ObservationPointWidget *m_PointWidgetUG;
     dialogChooseExistProcess* m_DialogGetProcess;
 
     PlotDrawing* m_PlotDrawing;
     WolframConnector* m_WolframObject;
     IConverterObject *m_PassportObject;
+    IConverterObject *m_WolframConverter;
     System *m_System;
 
     FixArea *m_FixPointsWidget;

@@ -7,6 +7,8 @@
 #include <string>
 #include <vector>
 
+using std::vector;
+
 namespace mathmod
 {
     class System : public ISystem
@@ -19,6 +21,9 @@ namespace mathmod
 		PointStr getParameters() const;
 		int numParameters() const;
 
+        void setGrinFunction(const Function& func);
+        Function getGrinFunction() const;
+
 		void setProcess(const Function& func);
 		Function getProcess() const;
 
@@ -28,15 +33,22 @@ namespace mathmod
 		void setRightSideOfEquation(const Function& func);
 		Function getRightSideOfEquation() const;
 		
-		void addCondition(const Condition& condition);
+        void addCondition(Pointf condition);
+        void setCondtion(vector<Pointf> conditions);
+        vector<Pointf> getInitialConditions();
+        vector<Pointf> getCurrentConditions();
 		int numConditions() const;
 
-		void addOutsideAreaPoint(const OutsideAreaPoint& point);
+        void addOutsideAreaPoint(const Pointf& point);
+        void setOutsideAreaPoint(vector<Pointf> conditions);
+
 		int numOutsideAreaPoints() const;
 
         void setProblemType(ProblemType type);
         ProblemType getProblemType();
 
+        void setControlParam(ControlParam type);
+        ControlParam getControlParam();
         void setControlType(ControlType type);
         ControlType getControlType();
 
@@ -47,18 +59,19 @@ namespace mathmod
 		Function m_Process;
 		Function m_DifOperator;
 		Function m_RightSideOfEquation;
+        Function m_Grin;
 
-		std::vector<Condition> m_InitialConditions;
-		std::vector<Condition> m_BoundaryConditions;
-		std::vector<Condition> m_CurrentConditions;
+        std::vector<Pointf> m_InitialConditions;
+        std::vector<Pointf> m_CurrentConditions;
 
-		std::vector<OutsideAreaPoint> m_LeftRightOutsideAreaPoints;
-		std::vector<OutsideAreaPoint> m_BottomOutsideAreaPoints;
+        std::vector<Pointf> m_LeftRightOutsideAreaPoints;
+        std::vector<Pointf> m_BottomOutsideAreaPoints;
 
 
         ProblemType m_ProblemType;
+        ControlParam m_ControlParam;
         ControlType m_ControlType;
-		PointStr m_Parameters;
+        PointStr m_Parameters;
         Area m_Area;
 	};
 
