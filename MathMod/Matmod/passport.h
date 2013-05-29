@@ -20,7 +20,7 @@ namespace mathmod
         string grinFunction() const;
 
         string problemType();
-        string controlType();
+        string controlParam();
 
         string area();
 

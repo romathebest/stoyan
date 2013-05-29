@@ -51,19 +51,33 @@ namespace mathmod
         }
     }
 
-    string Passport::controlType()
+    string Passport::controlParam()
     {
-        switch(pSystem->getControlType())
+        bool* control = (bool*)pSystem->getControlParam();
+        string result = "";
+
+        if (control == NULL) return "NOT INITIALIZE!";
+
+        if ((!control[0])&&(!control[1])&&(!control[2]))
         {
-            case BOUNDARY_CONDITIONS:
-                return "Крайові умови";
-            case INITIAL_CONDITIONS:
-                return "Початкові умови";
-            case BOUNDARY_AND_INITIAL_CONDITIONS:
-                return "Початкові та крайові умови";
-            default:
-                return "Чим керуємо невідомо :)";
+            return "Чим керуємо невідомо :)";
         }
+        else
+        {
+            if (control[0])
+            {
+                result += "функція керування;  ";
+            }
+            if (control[1])
+            {
+                result += "початкові умови;  ";
+            }
+            if (control[2])
+            {
+                result += "крайові умови.";
+            }
+        }
+        return result;
     }
 
     string Passport::area()

@@ -8,12 +8,17 @@ namespace mathmod
         m_RightSideOfEquation(""),
         m_Parameters(0)
 	{
+        m_ControlParam = new bool[3];
+        for (int i=0; i<3; ++i)
+        {
+            m_ControlParam[i] = false;
+        }
 	}
 
 
 	System::~System(void)
 	{
-
+        delete m_ControlParam;
 	}
 
 	void System::setParameters(const PointStr& param)
@@ -113,6 +118,16 @@ namespace mathmod
     ProblemType System::getProblemType()
     {
         return m_ProblemType;
+    }
+
+    void System::setControlParam(ControlParam type)
+    {
+        m_ControlParam = type;
+    }
+
+    bool* System::getControlParam()
+    {
+        return m_ControlParam;
     }
 
     void System::setControlType(ControlType type)
