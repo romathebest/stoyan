@@ -60,8 +60,8 @@ HEADERS  += mainwindow.h \
     Matmod/wolframconnector.h \
     Matmod/wolframconverter.h
 
-LIBS += C:/Qt/Qt5.0.1/Tools/MinGW/i686-w64-mingw32/lib/ml32i3m.lib
-#LIBS += E:/QT/5.0.1/Tools/MinGW/i686-w64-mingw32/lib/ml32i3m.lib
+#LIBS += C:/Qt/Qt5.0.1/Tools/MinGW/i686-w64-mingw32/lib/ml32i3m.lib
+LIBS += E:/QT/5.0.1/Tools/MinGW/i686-w64-mingw32/lib/ml32i3m.lib
 
 FORMS    += mainwindow.ui \
     dialogchooseexistprocess.ui
