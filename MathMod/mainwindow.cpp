@@ -8,10 +8,14 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow),
     m_AreaWidget(NULL),
     m_ObservationPointWidget(NULL),
+    m_PointWidgetU0(NULL),
+    m_PointWidgetUG(NULL),
     m_DialogGetProcess(NULL),
     m_WolframObject(NULL)
 {
     ui->setupUi(this);
+
+    m_Control = new bool[3];
 
     m_PlotDrawing = new PlotDrawing(ui->ResultGraphic);
 
@@ -28,6 +32,11 @@ MainWindow::MainWindow(QWidget *parent) :
     m_WolframObject = new WolframConnector(m_System);
 
     ui->pushButtonSolve->setEnabled(false);
+
+    ui->widget_u0->setEnabled(false);
+    ui->widget_ug->setEnabled(false);
+
+    ui->widget_DiskModFunc->setEnabled(false);
 }
 
 void MainWindow::DisableProcessInput()
@@ -36,6 +45,7 @@ void MainWindow::DisableProcessInput()
     ui->widget_10->setEnabled(false);
     ui->widget_11->setEnabled(false);
     ui->widget_12->setEnabled(false);
+    ui->widget_13->setEnabled(false);
     ui->widget_15->setEnabled(false);
 }
 
@@ -47,6 +57,7 @@ MainWindow::~MainWindow()
     delete m_PlotDrawing;
     delete ui;
     delete m_ParametersWidget;
+    delete m_Control;
 }
 
 
@@ -69,8 +80,9 @@ void MainWindow::on_pushButton_pressed()
 void MainWindow::on_pushButton_2_clicked()
 {
     if (m_ObservationPointWidget != NULL)
+    {
         delete m_ObservationPointWidget;
-
+    }
     m_System->setArea(m_AreaWidget->area());
 
     m_ObservationPointWidget = new ObservationPointWidget(m_AreaWidget->area(), ui->widget_6);
@@ -82,6 +94,45 @@ void MainWindow::on_pushButton_5_pressed()
 {
     m_System->setDifferentialOperator(ui->lineEditL->text().toStdString());
     m_System->setProcess(ui->lineEditY->text().toStdString());
+    m_Control[0] = false; m_Control[1] = false; m_Control[2] = false;
+    if (ui->checkBoxFK->isChecked())
+    {
+        m_Control[0] = true;
+    }
+    if(ui->checkBoxPY->isChecked())
+    {
+        m_Control[1] = true;
+        ui->widget_u0->setEnabled(true);
+
+        if (m_PointWidgetU0 != NULL)
+        {
+            delete m_PointWidgetU0;
+        }
+        m_PointWidgetU0 = new ObservationPointWidget(m_AreaWidget->area(), ui->widget_DiskU0);
+    }
+    else
+    {
+        ui->widget_u0->setEnabled(false);
+        ui->widget_DiskU0->setEnabled(false);
+    }
+    if(ui->checkBoxKY->isChecked())
+    {
+        m_Control[2] = true;
+        ui->widget_ug->setEnabled(true);
+
+        if (m_PointWidgetUG != NULL)
+        {
+            delete m_PointWidgetUG;
+        }
+        m_PointWidgetUG = new ObservationPointWidget(m_AreaWidget->area(), ui->widget_DiskUg);
+    }
+    else
+    {
+        ui->widget_ug->setEnabled(false);
+        ui->widget_DiskUg->setEnabled(false);
+    }
+    m_System->setControlParam(m_Control);
+
     ui->toolBox->setCurrentIndex(2);
     rewritePassport();
 }
@@ -90,29 +141,13 @@ void MainWindow::on_pushButton_5_pressed()
 void MainWindow::on_radioButtonDirectProblem_pressed()
 {
     m_System->setProblemType(mathmod::DIRECT_PROBLEM);
-    ui->comboBoxControlType->setEnabled(false);
+    ui->widgetObernenaKer->setEnabled(false);
 }
 
 void MainWindow::on_radioButtonInverseProblem_pressed()
 {
     m_System->setProblemType(mathmod::INVERSE_PROBLEM);
-    ui->comboBoxControlType->setEnabled(true);
-}
-
-void MainWindow::on_comboBoxControlType_activated(int index)
-{
-    switch(index)
-    {
-    case 0:
-        m_System->setControlType(mathmod::INITIAL_CONDITIONS);
-        break;
-    case 1:
-        m_System->setControlType(mathmod::BOUNDARY_CONDITIONS);
-        break;
-    case 2:
-         m_System->setControlType(mathmod::BOUNDARY_AND_INITIAL_CONDITIONS);
-        break;
-    }
+    ui->widgetObernenaKer->setEnabled(true);
 }
 
 void MainWindow::rewritePassport()
@@ -129,12 +164,12 @@ void MainWindow::rewritePassport()
     difOperator += QString::fromStdString(m_PassportObject->differentialOperator());
     difOperator += "\n";
 
-    QString problemType = "Тип задача: ";
+    QString problemType = "Тип задачі: ";
     problemType += QString::fromStdString(m_PassportObject->problemType());
     problemType += "\n";
 
     QString controlType = "Керуємо: ";
-    controlType += QString::fromStdString(m_PassportObject->controlType());
+    controlType += QString::fromStdString(m_PassportObject->controlParam());
     controlType += "\n";
 
     QString area = "Область:\n";
@@ -156,6 +191,7 @@ void MainWindow::on_pushButton_6_pressed()
     ui->widget_10->setEnabled(true);
     ui->widget_11->setEnabled(true);
     ui->widget_12->setEnabled(true);
+    ui->widget_13->setEnabled(true);
     ui->widget_15->setEnabled(true);
 }
 
@@ -183,6 +219,7 @@ void MainWindow::on_pushButton_8_pressed()
     DisableProcessInput();
 
     ui->widget_GrinInput->setEnabled(true);
+    ui->widget_10->setEnabled(true);
     ui->widget_15->setEnabled(true);
 }
 
@@ -194,11 +231,13 @@ void MainWindow::on_pushButton_9_pressed()
 void MainWindow::on_radioButtonInverseProblem_2_pressed()
 {
     ui->widget_23->setEnabled(false);
+    ui->widget_DiskModFunc->setEnabled(true);
 }
 
 void MainWindow::on_radioButtonDirectProblem_2_pressed()
 {
     ui->widget_23->setEnabled(true);
+    ui->widget_DiskModFunc->setEnabled(false);
 }
 
 void MainWindow::on_pushButtonConnectWithWolfram_clicked()

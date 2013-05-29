@@ -18,7 +18,7 @@ namespace mathmod
         string rightSideOfEquation() const;
 
         string problemType();
-        string controlType();
+        string controlParam();
 
         string area();
     private:

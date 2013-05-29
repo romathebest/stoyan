@@ -42,7 +42,7 @@ private slots:
 
     void on_radioButtonInverseProblem_pressed();
 
-    void on_comboBoxControlType_activated(int index);
+//    void on_comboBoxControlType_activated(int index);
 
     void rewritePassport();
 
@@ -67,10 +67,13 @@ private slots:
     void on_pushButtonBuildPassport_clicked();
 
 private:
+    bool* m_Control;
     Ui::MainWindow *ui;
     ParametrsWidget *m_ParametersWidget;
     AreaWidget *m_AreaWidget;
     ObservationPointWidget *m_ObservationPointWidget;
+    ObservationPointWidget *m_PointWidgetU0;
+    ObservationPointWidget *m_PointWidgetUG;
     dialogChooseExistProcess* m_DialogGetProcess;
 
     PlotDrawing* m_PlotDrawing;

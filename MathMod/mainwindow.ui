@@ -25,13 +25,13 @@
       </property>
       <property name="minimumSize">
        <size>
-        <width>470</width>
+        <width>490</width>
         <height>0</height>
        </size>
       </property>
       <property name="maximumSize">
        <size>
-        <width>470</width>
+        <width>490</width>
         <height>16777215</height>
        </size>
       </property>
@@ -94,14 +94,14 @@
           <string notr="true"/>
          </property>
          <property name="currentIndex">
-          <number>1</number>
+          <number>4</number>
          </property>
          <widget class="QWidget" name="pageParameters">
           <property name="geometry">
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>452</width>
+            <width>472</width>
             <height>176</height>
            </rect>
           </property>
@@ -166,36 +166,18 @@
           <property name="geometry">
            <rect>
             <x>0</x>
-            <y>0</y>
-            <width>435</width>
-            <height>378</height>
+            <y>-235</y>
+            <width>455</width>
+            <height>411</height>
            </rect>
           </property>
           <attribute name="label">
            <string>Процес</string>
           </attribute>
-          <layout class="QVBoxLayout" name="verticalLayout_2">
+          <layout class="QVBoxLayout" name="verticalLayout_11">
            <item>
             <widget class="QWidget" name="widgetProcess" native="true">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>360</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>16777215</width>
-               <height>360</height>
-              </size>
-             </property>
-             <layout class="QVBoxLayout" name="verticalLayout_11">
+             <layout class="QVBoxLayout" name="verticalLayout_5">
               <item>
                <widget class="QWidget" name="widget_20" native="true">
                 <property name="sizePolicy">
@@ -207,16 +189,16 @@
                 <property name="minimumSize">
                  <size>
                   <width>0</width>
-                  <height>50</height>
+                  <height>41</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
                   <width>16777215</width>
-                  <height>50</height>
+                  <height>41</height>
                  </size>
                 </property>
-                <layout class="QHBoxLayout" name="horizontalLayout_13">
+                <layout class="QHBoxLayout" name="horizontalLayout_8">
                  <item>
                   <widget class="QPushButton" name="pushButton_6">
                    <property name="text">
@@ -227,72 +209,15 @@
                  <item>
                   <widget class="QPushButton" name="pushButton_7">
                    <property name="text">
-                    <string>Вибрати </string>
+                    <string>Вибрати</string>
                    </property>
                   </widget>
                  </item>
                  <item>
                   <widget class="QPushButton" name="pushButton_8">
                    <property name="text">
-                    <string>Задати функцію Гріна</string>
+                    <string>Функція Гріна</string>
                    </property>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-              <item>
-               <widget class="QWidget" name="widget_9" native="true">
-                <layout class="QVBoxLayout" name="verticalLayout_5">
-                 <item>
-                  <widget class="QWidget" name="widget_11" native="true">
-                   <layout class="QHBoxLayout" name="horizontalLayout_9">
-                    <item>
-                     <widget class="QLabel" name="label">
-                      <property name="text">
-                       <string>L = </string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QLineEdit" name="lineEditL"/>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QWidget" name="widget_12" native="true">
-                   <layout class="QHBoxLayout" name="horizontalLayout_10">
-                    <item>
-                     <widget class="QLabel" name="label_2">
-                      <property name="text">
-                       <string>y = </string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QLineEdit" name="lineEditY"/>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QWidget" name="widget_GrinInput" native="true">
-                   <property name="enabled">
-                    <bool>true</bool>
-                   </property>
-                   <layout class="QHBoxLayout" name="horizontalLayout_14">
-                    <item>
-                     <widget class="QLabel" name="label_3">
-                      <property name="text">
-                       <string>Grin = </string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QLineEdit" name="lineEditY_2"/>
-                    </item>
-                   </layout>
                   </widget>
                  </item>
                 </layout>
@@ -300,12 +225,69 @@
               </item>
               <item>
                <widget class="QWidget" name="widget_10" native="true">
-                <layout class="QHBoxLayout" name="horizontalLayout_8">
+                <layout class="QVBoxLayout" name="verticalLayout_2">
                  <item>
-                  <widget class="QWidget" name="widget_13" native="true">
+                  <widget class="QWidget" name="widget_9" native="true">
                    <layout class="QVBoxLayout" name="verticalLayout_7">
                     <item>
+                     <widget class="QWidget" name="widget_11" native="true">
+                      <layout class="QHBoxLayout" name="horizontalLayout_9">
+                       <item>
+                        <widget class="QLabel" name="label">
+                         <property name="text">
+                          <string>L = </string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QLineEdit" name="lineEditL"/>
+                       </item>
+                      </layout>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QWidget" name="widget_12" native="true">
+                      <layout class="QHBoxLayout" name="horizontalLayout_10">
+                       <item>
+                        <widget class="QLabel" name="label_2">
+                         <property name="text">
+                          <string>y = </string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QLineEdit" name="lineEditY"/>
+                       </item>
+                      </layout>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QWidget" name="widget_GrinInput" native="true">
+                      <layout class="QHBoxLayout" name="horizontalLayout_11">
+                       <item>
+                        <widget class="QLabel" name="label_3">
+                         <property name="text">
+                          <string>Grin = </string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QLineEdit" name="lineEditY_2"/>
+                       </item>
+                      </layout>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QWidget" name="widget_13" native="true">
+                   <layout class="QHBoxLayout" name="horizontalLayout">
+                    <item>
                      <widget class="QRadioButton" name="radioButtonDirectProblem">
+                      <property name="autoFillBackground">
+                       <bool>false</bool>
+                      </property>
                       <property name="text">
                        <string>Пряма задача</string>
                       </property>
@@ -317,7 +299,7 @@
                     <item>
                      <widget class="QRadioButton" name="radioButtonInverseProblem">
                       <property name="text">
-                       <string>Оберенена задача</string>
+                       <string>Обернена задача</string>
                       </property>
                      </widget>
                     </item>
@@ -325,78 +307,84 @@
                   </widget>
                  </item>
                  <item>
-                  <widget class="QWidget" name="widget_14" native="true">
+                  <widget class="QWidget" name="widgetObernenaKer" native="true">
+                   <property name="enabled">
+                    <bool>false</bool>
+                   </property>
                    <layout class="QVBoxLayout" name="verticalLayout_8">
                     <item>
-                     <widget class="QComboBox" name="comboBoxControlType">
-                      <property name="enabled">
-                       <bool>false</bool>
+                     <widget class="QLabel" name="label_6">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
                       </property>
-                      <item>
-                       <property name="text">
-                        <string>Функція керування</string>
-                       </property>
-                      </item>
-                      <item>
-                       <property name="text">
-                        <string>Крайові умови</string>
-                       </property>
-                      </item>
-                      <item>
-                       <property name="text">
-                        <string>Початкові умови</string>
-                       </property>
-                      </item>
-                      <item>
-                       <property name="text">
-                        <string>Крайові + початкові умови</string>
-                       </property>
-                      </item>
+                      <property name="text">
+                       <string>Чим керуємо:</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QWidget" name="widget_14" native="true">
+                      <layout class="QHBoxLayout" name="horizontalLayout_13">
+                       <item>
+                        <widget class="QCheckBox" name="checkBoxFK">
+                         <property name="text">
+                          <string>Функція керування</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QCheckBox" name="checkBoxPY">
+                         <property name="text">
+                          <string>Початкові умови</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QCheckBox" name="checkBoxKY">
+                         <property name="text">
+                          <string>Крайові умови</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
                      </widget>
                     </item>
                    </layout>
                   </widget>
                  </item>
-                </layout>
-               </widget>
-              </item>
-              <item>
-               <widget class="QWidget" name="widget_15" native="true">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <layout class="QHBoxLayout" name="horizontalLayout_11">
                  <item>
-                  <spacer name="horizontalSpacer_3">
-                   <property name="orientation">
-                    <enum>Qt::Horizontal</enum>
-                   </property>
-                   <property name="sizeHint" stdset="0">
-                    <size>
-                     <width>277</width>
-                     <height>13</height>
-                    </size>
-                   </property>
-                  </spacer>
-                 </item>
-                 <item>
-                  <widget class="QPushButton" name="pushButton_5">
-                   <property name="text">
-                    <string>Підтвердити</string>
-                   </property>
+                  <widget class="QWidget" name="widget_15" native="true">
+                   <layout class="QHBoxLayout" name="horizontalLayout_14">
+                    <item>
+                     <spacer name="horizontalSpacer_3">
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>268</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                    <item>
+                     <widget class="QPushButton" name="pushButton_5">
+                      <property name="text">
+                       <string>Підтвердити</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
                   </widget>
                  </item>
                 </layout>
                </widget>
               </item>
              </layout>
-             <zorder>widget_15</zorder>
-             <zorder>widget_9</zorder>
-             <zorder>widget_10</zorder>
-             <zorder>widget_20</zorder>
             </widget>
            </item>
           </layout>
@@ -406,7 +394,7 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>452</width>
+            <width>472</width>
             <height>176</height>
            </rect>
           </property>
@@ -427,7 +415,7 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>414</width>
+                   <width>434</width>
                    <height>82</height>
                   </rect>
                  </property>
@@ -488,7 +476,7 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>452</width>
+            <width>472</width>
             <height>176</height>
            </rect>
           </property>
@@ -544,8 +532,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>452</width>
-            <height>176</height>
+            <width>455</width>
+            <height>195</height>
            </rect>
           </property>
           <attribute name="label">
@@ -554,79 +542,99 @@
           <layout class="QHBoxLayout" name="horizontalLayout_5">
            <item>
             <widget class="QWidget" name="widget_7" native="true">
-             <widget class="QWidget" name="widget_22" native="true">
-              <property name="geometry">
-               <rect>
-                <x>10</x>
-                <y>0</y>
-                <width>401</width>
-                <height>35</height>
-               </rect>
-              </property>
-              <layout class="QHBoxLayout" name="horizontalLayout_16">
-               <item>
-                <widget class="QRadioButton" name="radioButtonInverseProblem_2">
-                 <property name="text">
-                  <string>Дискретні</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QRadioButton" name="radioButtonDirectProblem_2">
-                 <property name="text">
-                  <string>Неперервні</string>
-                 </property>
-                 <property name="checked">
-                  <bool>true</bool>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-             <widget class="QWidget" name="widget_23" native="true">
-              <property name="geometry">
-               <rect>
-                <x>210</x>
-                <y>40</y>
-                <width>171</width>
-                <height>101</height>
-               </rect>
-              </property>
-              <layout class="QVBoxLayout" name="verticalLayout_13">
-               <item>
-                <widget class="QWidget" name="widget_24" native="true">
-                 <layout class="QHBoxLayout" name="horizontalLayout_17">
-                  <item>
-                   <widget class="QLabel" name="label_4">
-                    <property name="text">
-                     <string>Uo = </string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QLineEdit" name="lineEditL_2"/>
-                  </item>
-                 </layout>
-                </widget>
-               </item>
-               <item>
-                <widget class="QWidget" name="widget_25" native="true">
-                 <layout class="QHBoxLayout" name="horizontalLayout_18">
-                  <item>
-                   <widget class="QLabel" name="label_5">
-                    <property name="text">
-                     <string>Uг = </string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QLineEdit" name="lineEditY_3"/>
-                  </item>
-                 </layout>
-                </widget>
-               </item>
-              </layout>
-             </widget>
+             <layout class="QVBoxLayout" name="verticalLayout_14">
+              <item>
+               <widget class="QWidget" name="widget_22" native="true">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <layout class="QHBoxLayout" name="horizontalLayout_16">
+                 <item>
+                  <widget class="QRadioButton" name="radioButtonInverseProblem_2">
+                   <property name="text">
+                    <string>Дискретні</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="radioButtonDirectProblem_2">
+                   <property name="text">
+                    <string>Неперервні</string>
+                   </property>
+                   <property name="checked">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QWidget" name="widget_25" native="true">
+                <layout class="QHBoxLayout" name="horizontalLayout_20">
+                 <item>
+                  <widget class="QWidget" name="widget_DiskModFunc" native="true">
+                   <layout class="QVBoxLayout" name="verticalLayout_15">
+                    <item>
+                     <widget class="QWidget" name="widget_DiskU0" native="true"/>
+                    </item>
+                    <item>
+                     <widget class="QWidget" name="widget_DiskUg" native="true"/>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QWidget" name="widget_23" native="true">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_13">
+                    <item>
+                     <widget class="QWidget" name="widget_u0" native="true">
+                      <layout class="QHBoxLayout" name="horizontalLayout_17">
+                       <item>
+                        <widget class="QLabel" name="label_4">
+                         <property name="text">
+                          <string>Uo = </string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QLineEdit" name="lineEditL_2"/>
+                       </item>
+                      </layout>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QWidget" name="widget_ug" native="true">
+                      <layout class="QHBoxLayout" name="horizontalLayout_18">
+                       <item>
+                        <widget class="QLabel" name="label_5">
+                         <property name="text">
+                          <string>Uг = </string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QLineEdit" name="lineEditY_3"/>
+                       </item>
+                      </layout>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
             </widget>
            </item>
           </layout>

@@ -37,6 +37,8 @@ namespace mathmod
         void setProblemType(ProblemType type);
         ProblemType getProblemType();
 
+        void setControlParam(ControlParam type);
+        ControlParam getControlParam();
         void setControlType(ControlType type);
         ControlType getControlType();
 
@@ -57,8 +59,9 @@ namespace mathmod
 
 
         ProblemType m_ProblemType;
+        ControlParam m_ControlParam;
         ControlType m_ControlType;
-		PointStr m_Parameters;
+        PointStr m_Parameters;
         Area m_Area;
 	};
 
