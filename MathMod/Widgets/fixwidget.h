@@ -2,6 +2,7 @@
 #define FIXWIDGET_H
 
 #include <QWidget>
+#include <QRadioButton>
 #include <QDoubleSpinBox>
 #include <QLabel>
 #include <QHBoxLayout>
@@ -20,12 +21,12 @@ public:
 signals:
 
 public slots:
-
+    bool isCheched();
 private slots:
     void valChanged(double val);
 
 private:
-
+    QRadioButton *m_checkParam;
     QDoubleSpinBox *m_dsbValue;
     QLabel *m_lblParameter;
 

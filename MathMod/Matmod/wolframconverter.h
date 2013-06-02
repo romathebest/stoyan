@@ -12,6 +12,7 @@ namespace mathmod
         virtual string parameters() const;
         virtual int numParameters() const;
         virtual string process();
+        virtual string processFor2DGraphic(vector<FixedStruct> fixedParam, string unfixedparam);
         virtual string differentialOperator() const;
         virtual string rightSideOfEquation() const;
 
@@ -26,6 +27,7 @@ namespace mathmod
         virtual string conditions();
 
     private:
+        void replaceAll( string &s, const string &search, const string &replace );
         string bigString(vector<string> v);
         string buildCondtionString(string name, const vector<Pointf> condtions);
     private:

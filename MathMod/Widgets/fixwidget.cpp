@@ -6,10 +6,14 @@ FixWidget::FixWidget(std::string param, QWidget *parent) :
     QHBoxLayout *vbox = new QHBoxLayout(this);
     vbox->setSpacing(1);
 
+    m_checkParam = new QRadioButton(this);
+    m_checkParam->setChecked(true);
+
     m_dsbValue = new QDoubleSpinBox(this);
 
     m_lblParameter = new QLabel(QString::fromStdString(param), this);
 
+    vbox->addWidget(m_checkParam);
     vbox->addWidget(m_lblParameter);
     vbox->addWidget(m_dsbValue);
 
@@ -30,5 +34,10 @@ void FixWidget::valChanged(double val)
 QString FixWidget::value()
 {
     return m_dsbValue->text();
+}
+
+bool FixWidget::isCheched()
+{
+    return m_checkParam->isChecked();
 }
 

@@ -10,6 +10,7 @@
 #include "Matmod/Point.h"
 #include "Matmod/Area.h"
 
+
 using mathmod::PointStr;
 using mathmod::Area;
 
@@ -24,7 +25,7 @@ public:
 signals:
 
 public slots:
-
+    bool isOneParametersUnckeded();
 private:
     PointStr m_Parameters;
     QVector<FixWidget *> m_FixWidgets;

@@ -302,11 +302,13 @@ void  MainWindow::rewriteWolframCode()
 
 void MainWindow::on_pushButton_3_clicked()
 {
-    // apply mathematica
-    m_WolframObject->buildGraphic();
-    QString path("result.png");
-    QImage image(path);
-    ui->graphicView->setPixmap(QPixmap::fromImage(image));
-    ui->graphicView->adjustSize();
-    ui->graphicView->setScaledContents(true);
+    if(m_FixPointsWidget->isOneParametersUnckeded())
+    {
+        m_WolframObject->buildGraphic();
+        QString path("result.png");
+        QImage image(path);
+        ui->graphicView->setPixmap(QPixmap::fromImage(image));
+        ui->graphicView->adjustSize();
+        ui->graphicView->setScaledContents(true);
+    }
 }

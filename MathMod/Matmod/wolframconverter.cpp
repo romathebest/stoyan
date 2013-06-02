@@ -37,6 +37,27 @@ namespace mathmod
         return  res;
     }
 
+    void WolframConverter::replaceAll( string &s, const string &search, const string &replace )
+    {
+        for( size_t pos = 0; ; pos += replace.length() )
+        {
+            pos = s.find( search, pos );
+            if( pos == string::npos ) break;
+            s.erase( pos, search.length() );
+            s.insert( pos, replace );
+        }
+    }
+
+    string WolframConverter::processFor2DGraphic(vector<FixedStruct> fixedParam, string unfixedparam)
+    {
+        string param = m_pSystem->getProcess();
+        for(int i = 0; i < fixedParam.size(); i++)
+        {
+            replaceAll(param, fixedParam[i].param, fixedParam[i].value);
+        }
+        return "Plot[" + param + ", {" + unfixedparam +", 0, 10}]";
+    }
+
     string WolframConverter::differentialOperator() const
     {
         string res = "L[";

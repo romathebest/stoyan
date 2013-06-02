@@ -37,3 +37,15 @@ FixArea::~FixArea()
      return res;
  }
 
+ bool FixArea::isOneParametersUnckeded()
+ {
+    int numUnchekedParam = 0;
+    for(int i = 0; i < m_FixWidgets.size(); i++)
+    {
+        if(!m_FixWidgets[i]->isCheched()) numUnchekedParam++;
+    }
+    if(numUnchekedParam == 1)
+        return true;
+    else return false;
+ }
+

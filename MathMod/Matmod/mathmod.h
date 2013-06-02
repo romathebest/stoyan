@@ -12,6 +12,12 @@ using std::vector;
 
 namespace mathmod
 {
+    struct FixedStruct
+    {
+        string param;
+        string value;
+    };
+
     typedef std::string Function;
 
     enum ProblemType
