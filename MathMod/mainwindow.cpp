@@ -89,6 +89,7 @@ void MainWindow::on_pushButton_2_clicked()
         delete m_ObservationPointWidget;
     }
     m_System->setArea(m_AreaWidget->area());
+    m_FixPointsWidget->setArea(m_AreaWidget->area());
 
     m_ObservationPointWidget = new ObservationPointWidget(m_AreaWidget->area(), ui->widget_6);
     ui->toolBox->setCurrentIndex(3);
