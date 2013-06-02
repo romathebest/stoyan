@@ -301,7 +301,7 @@ void  MainWindow::rewriteWolframCode()
 void MainWindow::on_pushButton_3_clicked()
 {
     // apply mathematica
-    QString path("../results/images.jpeg");
+    QString path("../results/images.png");
     QImage image(path);
     ui->graphicView->setPixmap(QPixmap::fromImage(image));
     ui->graphicView->adjustSize();
