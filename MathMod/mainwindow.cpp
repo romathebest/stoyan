@@ -304,11 +304,17 @@ void MainWindow::on_pushButton_3_clicked()
 {
     if(m_FixPointsWidget->isOneParametersUnckeded())
     {
+        ui->labelFixParametersInfo->setText("Почекайте. Будується графік.");
         m_WolframObject->buildGraphic();
         QString path("result.png");
         QImage image(path);
         ui->graphicView->setPixmap(QPixmap::fromImage(image));
         ui->graphicView->adjustSize();
         ui->graphicView->setScaledContents(true);
+        ui->labelFixParametersInfo->setText("Графік побудований.");
+    }
+    else
+    {
+        ui->labelFixParametersInfo->setText("Зафіксуйте всі параметри крім одного.");
     }
 }
