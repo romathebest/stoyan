@@ -49,3 +49,16 @@ FixArea::~FixArea()
     else return false;
  }
 
+ vector<FixedStruct> FixArea::fixedparameters()
+ {
+    vector<FixedStruct> fs;
+    for(int i = 0; i < m_FixWidgets.size(); i++)
+    {
+        if(m_FixWidgets[i]->isCheched())
+        {
+            fs.push_back(m_FixWidgets[i]->fixedStruct());
+        }
+    }
+    return fs;
+ }
+

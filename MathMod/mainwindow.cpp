@@ -305,6 +305,7 @@ void MainWindow::on_pushButton_3_clicked()
     if(m_FixPointsWidget->isOneParametersUnckeded())
     {
         ui->labelFixParametersInfo->setText("Почекайте. Будується графік.");
+        m_WolframConverter->processFor2DGraphic(m_FixPointsWidget->fixedparameters(), "2");
         m_WolframObject->buildGraphic();
         QString path("result.png");
         QImage image(path);

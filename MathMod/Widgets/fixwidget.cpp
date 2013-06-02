@@ -41,3 +41,11 @@ bool FixWidget::isCheched()
     return m_checkParam->isChecked();
 }
 
+FixedStruct FixWidget::fixedStruct()
+{
+    FixedStruct fs;
+    fs.param = m_lblParameter->text().toStdString();
+    fs.value = m_dsbValue->text().toStdString();
+    return fs;
+}
+
