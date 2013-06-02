@@ -25,7 +25,7 @@ MainWindow::MainWindow(QWidget *parent) :
     m_System = new System();
     m_PassportObject = new Passport(m_System);
 
-    ui->widget_2->setVisible(false);
+    ui->widget_2->setVisible(true);
     ui->ResultGraphic->setVisible(false);
     DisableProcessInput();
 
@@ -255,6 +255,7 @@ void MainWindow::on_pushButtonConnectWithWolfram_clicked()
 
 void MainWindow::on_pushButtonSolve_clicked()
 {
+    ui->stackedWidgetResult->setCurrentIndex(0);
     if (m_WolframObject->isOpen())
     {
         //пішла жара
@@ -275,5 +276,6 @@ void MainWindow::on_pushButtonSolve_clicked()
 
 void MainWindow::on_pushButtonBuildPassport_clicked()
 {
-    ui->widget_2->setVisible(true);
+    ui->stackedWidgetResult->setCurrentIndex(1);
+
 }

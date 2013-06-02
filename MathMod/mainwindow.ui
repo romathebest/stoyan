@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1566</width>
-    <height>503</height>
+    <width>1153</width>
+    <height>431</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -102,7 +102,7 @@
             <x>0</x>
             <y>0</y>
             <width>472</width>
-            <height>176</height>
+            <height>104</height>
            </rect>
           </property>
           <property name="toolTip">
@@ -166,7 +166,7 @@
           <property name="geometry">
            <rect>
             <x>0</x>
-            <y>-235</y>
+            <y>0</y>
             <width>455</width>
             <height>411</height>
            </rect>
@@ -394,8 +394,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>472</width>
-            <height>176</height>
+            <width>455</width>
+            <height>163</height>
            </rect>
           </property>
           <attribute name="label">
@@ -415,8 +415,8 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>434</width>
-                   <height>82</height>
+                   <width>417</width>
+                   <height>69</height>
                   </rect>
                  </property>
                  <layout class="QVBoxLayout" name="verticalLayout_9">
@@ -477,7 +477,7 @@
             <x>0</x>
             <y>0</y>
             <width>472</width>
-            <height>176</height>
+            <height>104</height>
            </rect>
           </property>
           <attribute name="label">
@@ -665,78 +665,76 @@
      </widget>
     </item>
     <item row="0" column="1">
-     <widget class="QWidget" name="widget_2" native="true">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
+     <widget class="QStackedWidget" name="stackedWidgetResult">
+      <property name="currentIndex">
+       <number>1</number>
       </property>
-      <property name="minimumSize">
-       <size>
-        <width>260</width>
-        <height>0</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>260</width>
-        <height>16777215</height>
-       </size>
-      </property>
-      <layout class="QVBoxLayout" name="verticalLayout_6">
-       <item>
-        <widget class="QLabel" name="labelPassport">
-         <property name="text">
-          <string>TextLabel</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <spacer name="verticalSpacer">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-      </layout>
+      <widget class="QWidget" name="page">
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="0" column="0">
+         <widget class="QCustomPlot" name="ResultGraphic" native="true">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>560</width>
+            <height>0</height>
+           </size>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_10"/>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="page_2">
+       <layout class="QGridLayout" name="gridLayout_3">
+        <item row="0" column="0">
+         <widget class="QWidget" name="widget_2" native="true">
+          <layout class="QVBoxLayout" name="verticalLayout_6">
+           <item>
+            <widget class="QLabel" name="labelPassport">
+             <property name="text">
+              <string>TextLabel</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="Line" name="line_3">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="labelWolframCode">
+             <property name="text">
+              <string>TextLabel</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="verticalSpacer">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>274</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
      </widget>
-    </item>
-    <item row="0" column="2">
-     <widget class="QCustomPlot" name="ResultGraphic" native="true">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="minimumSize">
-       <size>
-        <width>560</width>
-        <height>0</height>
-       </size>
-      </property>
-      <layout class="QVBoxLayout" name="verticalLayout_10"/>
-     </widget>
-    </item>
-    <item row="0" column="3">
-     <spacer name="horizontalSpacer_4">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>40</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
     </item>
    </layout>
   </widget>
@@ -745,7 +743,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1566</width>
+     <width>1153</width>
      <height>21</height>
     </rect>
    </property>
