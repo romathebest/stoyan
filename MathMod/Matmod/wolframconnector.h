@@ -5,6 +5,7 @@
 #include "mathlink.h"
 
 #include "Matmod/System.h"
+#include "Matmod/wolframconverter.h"
 
 #include <string>
 
@@ -16,15 +17,16 @@ namespace mathmod
     class WolframConnector
     {
     public:
-        WolframConnector(System* system);
+        WolframConnector(WolframConverter* wolframConverter);
         bool open();
         bool close();
         const char* execute();
         bool isOpen();
+        bool buildGraphic();
     private:
         char* buildInput();
     private:
-        ISystem *pSystem;
+        WolframConverter *m_pWolframConverter;
 
         bool m_IsOpened;
 

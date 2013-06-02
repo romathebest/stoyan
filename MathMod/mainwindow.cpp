@@ -29,8 +29,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->ResultGraphic->setVisible(false);
     DisableProcessInput();
 
-    m_WolframObject = new WolframConnector(m_System);
     m_WolframConverter = new WolframConverter(m_System);
+    m_WolframObject = new WolframConnector(m_WolframConverter);
+
 
     ui->pushButtonSolve->setEnabled(false);
 
@@ -301,7 +302,8 @@ void  MainWindow::rewriteWolframCode()
 void MainWindow::on_pushButton_3_clicked()
 {
     // apply mathematica
-    QString path("../results/images.png");
+    m_WolframObject->buildGraphic();
+    QString path("result.png");
     QImage image(path);
     ui->graphicView->setPixmap(QPixmap::fromImage(image));
     ui->graphicView->adjustSize();

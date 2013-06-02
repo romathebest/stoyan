@@ -24,8 +24,8 @@ namespace mathmod
         "yResult[x_, t_] := yInfinity[x,t] + y0[x, t] + yg[x, t];"
     };
 
-    WolframConnector::WolframConnector(System *system):
-        m_IsOpened(false)
+    WolframConnector::WolframConnector(WolframConverter *wolframConverter)
+        : m_IsOpened(false), m_pWolframConverter(wolframConverter)
     {
     }
 
@@ -106,6 +106,32 @@ namespace mathmod
         MLGetString(m_WolframLink, &str);
 
         return str;
+    }
+
+    bool WolframConnector::buildGraphic()
+    {
+        string mode = "result.png";
+
+        MLPutFunction( m_WolframLink, "EvaluatePacket", 1);
+        MLPutFunction(m_WolframLink, "Export", 2);
+        MLPutString(m_WolframLink, mode.c_str());
+        MLPutFunction( m_WolframLink, "ToExpression", 1);
+        MLPutString(m_WolframLink, "Plot[Sin[x], {x, 0, 6 Pi}]");
+
+        if(! MLFlush(m_WolframLink))
+        {
+            return "Error. Unable to flush an outgoing data buffered.";
+        }
+
+        int pkt;
+        while ((pkt = MLNextPacket(m_WolframLink),pkt) && pkt != RETURNPKT)
+        {
+            MLNewPacket(m_WolframLink);
+            if (MLError(m_WolframLink))
+            {
+                return "Error!";
+            }
+        }
     }
 
 }
