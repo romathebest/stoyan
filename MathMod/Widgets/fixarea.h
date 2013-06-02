@@ -8,8 +8,10 @@
 
 #include "Widgets/fixwidget.h"
 #include "Matmod/Point.h"
+#include "Matmod/Area.h"
 
 using mathmod::PointStr;
+using mathmod::Area;
 
 class FixArea : public QWidget
 {
@@ -18,6 +20,7 @@ public:
     explicit FixArea(PointStr param, QWidget *parent = 0);
     ~FixArea();
     QString sequence();
+    void setArea(Area area);
 signals:
 
 public slots:

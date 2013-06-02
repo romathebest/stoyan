@@ -15,6 +15,15 @@ FixArea::FixArea(PointStr param, QWidget *parent) :
     parent->setLayout(vbox);
 }
 
+void FixArea::setArea(Area area)
+{
+    for(int i = 0; i < area.size(); ++i)
+    {
+        // area size == widgets size
+        m_FixWidgets.at(i)->setRange(area[i]);
+    }
+}
+
 FixArea::~FixArea()
 {
     m_FixWidgets.clear();

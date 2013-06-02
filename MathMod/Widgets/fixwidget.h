@@ -6,12 +6,17 @@
 #include <QLabel>
 #include <QHBoxLayout>
 
+#include "matmod/Range.h"
+
+using mathmod::Rangef;
+
 class FixWidget : public QWidget
 {
     Q_OBJECT
 public:
     explicit FixWidget(std::string param, QWidget *parent = 0);
     QString value();
+    void setRange(Rangef range);
 signals:
 
 public slots:

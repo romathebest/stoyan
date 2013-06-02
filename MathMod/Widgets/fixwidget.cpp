@@ -16,6 +16,12 @@ FixWidget::FixWidget(std::string param, QWidget *parent) :
     connect(m_dsbValue, SIGNAL(valueChanged(double)), this, SLOT(valChanged(double)));
 }
 
+void FixWidget::setRange(Rangef range)
+{
+    m_dsbValue->setMinimum(range.min);
+    m_dsbValue->setMaximum(range.max);
+}
+
 void FixWidget::valChanged(double val)
 {
     m_dsbValue->setValue(val);
