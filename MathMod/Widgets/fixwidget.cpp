@@ -22,6 +22,7 @@ FixWidget::FixWidget(std::string param, QWidget *parent) :
 
 void FixWidget::setRange(Rangef range)
 {
+    m_Range = range;
     m_dsbValue->setMinimum(range.min);
     m_dsbValue->setMaximum(range.max);
 }
@@ -45,7 +46,14 @@ FixedStruct FixWidget::fixedStruct()
 {
     FixedStruct fs;
     fs.param = m_lblParameter->text().toStdString();
-    fs.value = m_dsbValue->text().toStdString();
+    fs.value = QString::number(m_dsbValue->value()).toStdString();
     return fs;
 }
+
+ string FixWidget::valueWithRange()
+ {
+     string str = "{" + m_Range.param + ", " + Converter::toStr<float>(m_Range.min) +
+             ", " + Converter::toStr<float>(m_Range.max) + "}";
+     return str;
+ }
 

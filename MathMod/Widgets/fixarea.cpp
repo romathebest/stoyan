@@ -62,3 +62,16 @@ FixArea::~FixArea()
     return fs;
  }
 
+ string FixArea::unFixedValueWithRange()
+ {
+     for(int i = 0; i < m_FixWidgets.size(); i++)
+     {
+         if(!m_FixWidgets[i]->isCheched())
+         {
+             return m_FixWidgets[i]->valueWithRange();
+         }
+     }
+     return "";
+ }
+
+

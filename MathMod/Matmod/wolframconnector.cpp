@@ -116,7 +116,7 @@ namespace mathmod
         MLPutFunction(m_WolframLink, "Export", 2);
         MLPutString(m_WolframLink, mode.c_str());
         MLPutFunction( m_WolframLink, "ToExpression", 1);
-        MLPutString(m_WolframLink, "Plot[Sin[x], {x, 0, 6 Pi}]");
+        MLPutString(m_WolframLink, m_pWolframConverter->plotString().c_str());
 
         if(! MLFlush(m_WolframLink))
         {

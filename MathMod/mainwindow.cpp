@@ -33,7 +33,7 @@ MainWindow::MainWindow(QWidget *parent) :
     m_WolframObject = new WolframConnector(m_WolframConverter);
 
 
-    ui->pushButtonSolve->setEnabled(false);
+    ui->pushButtonSolve->setEnabled(true);
 
     ui->widget_u0->setEnabled(false);
     ui->widget_ug->setEnabled(false);
@@ -305,7 +305,7 @@ void MainWindow::on_pushButton_3_clicked()
     if(m_FixPointsWidget->isOneParametersUnckeded())
     {
         ui->labelFixParametersInfo->setText("Почекайте. Будується графік.");
-        m_WolframConverter->processFor2DGraphic(m_FixPointsWidget->fixedparameters(), "2");
+        m_WolframConverter->buildPlot2DString(m_FixPointsWidget->fixedparameters(), m_FixPointsWidget->unFixedValueWithRange());
         m_WolframObject->buildGraphic();
         QString path("result.png");
         QImage image(path);

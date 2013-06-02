@@ -48,14 +48,19 @@ namespace mathmod
         }
     }
 
-    string WolframConverter::processFor2DGraphic(vector<FixedStruct> fixedParam, string unfixedparam)
+    void WolframConverter::buildPlot2DString(vector<FixedStruct> fixedParam, string unfixedparam)
     {
         string param = m_pSystem->getProcess();
         for(int i = 0; i < fixedParam.size(); i++)
         {
             replaceAll(param, fixedParam[i].param, fixedParam[i].value);
         }
-        return "Plot[" + param + ", {" + unfixedparam +", 0, 10}]";
+        m_Plot2D = "Plot[" + param + ", " + unfixedparam + "]";
+    }
+
+    string WolframConverter::plotString()
+    {
+        return m_Plot2D;
     }
 
     string WolframConverter::differentialOperator() const

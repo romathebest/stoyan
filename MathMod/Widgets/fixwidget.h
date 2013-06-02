@@ -9,9 +9,13 @@
 
 #include "matmod/Range.h"
 #include <Matmod/mathmod.h>
+#include <Matmod/Range.h>
+#include <string>
 
 using mathmod::Rangef;
 using mathmod::FixedStruct;
+using std::string;
+using mathmod::Converter;
 
 class FixWidget : public QWidget
 {
@@ -21,6 +25,7 @@ public:
     QString value();
     void setRange(Rangef range);
     FixedStruct fixedStruct();
+    string valueWithRange();
 signals:
 
 public slots:
@@ -32,6 +37,7 @@ private:
     QRadioButton *m_checkParam;
     QDoubleSpinBox *m_dsbValue;
     QLabel *m_lblParameter;
+    Rangef m_Range;
 
 };
 

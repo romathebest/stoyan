@@ -12,7 +12,8 @@ namespace mathmod
         virtual string parameters() const;
         virtual int numParameters() const;
         virtual string process();
-        virtual string processFor2DGraphic(vector<FixedStruct> fixedParam, string unfixedparam);
+        virtual void buildPlot2DString(vector<FixedStruct> fixedParam, string unfixedparam);
+        virtual string plotString();
         virtual string differentialOperator() const;
         virtual string rightSideOfEquation() const;
 
@@ -32,6 +33,7 @@ namespace mathmod
         string buildCondtionString(string name, const vector<Pointf> condtions);
     private:
         ISystem *m_pSystem;
+        string m_Plot2D;
     };
 }
 

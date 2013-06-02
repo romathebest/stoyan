@@ -7,6 +7,7 @@
 #include <QGridLayout>
 
 #include <vector>
+#include <string>
 
 #include "Widgets/fixwidget.h"
 #include "Matmod/Point.h"
@@ -18,6 +19,7 @@ using mathmod::PointStr;
 using mathmod::Area;
 using mathmod::FixedStruct;
 using std::vector;
+using std::string;
 
 class FixArea : public QWidget
 {
@@ -28,6 +30,7 @@ public:
     QString sequence();
     void setArea(Area area);
     vector<FixedStruct> fixedparameters();
+    string unFixedValueWithRange();
 signals:
 
 public slots:
