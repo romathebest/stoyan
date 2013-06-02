@@ -12,6 +12,7 @@
 #include <Widgets/fixarea.h>
 
 #include <Matmod/System.h>
+#include <Matmod/wolframconverter.h>
 #include <Matmod/passport.h>
 #include <Matmod/mathmod.h>
 #include "Matmod/wolframconnector.h"
@@ -46,6 +47,7 @@ private slots:
 //    void on_comboBoxControlType_activated(int index);
 
     void rewritePassport();
+    void rewriteWolframCode();
 
     void writePassportFromExistTask(QString text);
 
@@ -82,6 +84,7 @@ private:
 
     PlotDrawing* m_PlotDrawing;
     WolframConnector* m_WolframObject;
+    WolframConverter *m_WolframConverter;
     IConverterObject *m_PassportObject;
     System *m_System;
 };

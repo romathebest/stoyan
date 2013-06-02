@@ -127,4 +127,9 @@ namespace mathmod
         return buildCondtionString("L0",m_pSystem->getInitialConditions())
                 + buildCondtionString ("Lg", m_pSystem->getCurrentConditions());
     }
+
+    string WolframConverter::controlParam()
+    {
+        return "";
+    }
 }
