@@ -30,6 +30,7 @@ MainWindow::MainWindow(QWidget *parent) :
     DisableProcessInput();
 
     m_WolframObject = new WolframConnector(m_System);
+    m_WolframConverter = new WolframConverter(m_System);
 
     ui->pushButtonSolve->setEnabled(false);
 
@@ -75,6 +76,7 @@ void MainWindow::on_pushButton_pressed()
     m_System->setArea(m_AreaWidget->area());
 
     rewritePassport();
+    rewriteWolframCode();
 }
 
 void MainWindow::on_pushButton_2_clicked()
@@ -88,6 +90,7 @@ void MainWindow::on_pushButton_2_clicked()
     m_ObservationPointWidget = new ObservationPointWidget(m_AreaWidget->area(), ui->widget_6);
     ui->toolBox->setCurrentIndex(3);
     rewritePassport();
+    rewriteWolframCode();
 }
 
 void MainWindow::on_pushButton_5_pressed()
@@ -135,6 +138,7 @@ void MainWindow::on_pushButton_5_pressed()
 
     ui->toolBox->setCurrentIndex(2);
     rewritePassport();
+     rewriteWolframCode();
 }
 
 
@@ -226,6 +230,7 @@ void MainWindow::on_pushButton_8_pressed()
 void MainWindow::on_pushButton_9_pressed()
 {
     ui->toolBox->setCurrentIndex(4);
+    m_System->setCondtion(m_ObservationPointWidget->points());
 }
 
 void MainWindow::on_radioButtonInverseProblem_2_pressed()
@@ -277,5 +282,15 @@ void MainWindow::on_pushButtonSolve_clicked()
 void MainWindow::on_pushButtonBuildPassport_clicked()
 {
     ui->stackedWidgetResult->setCurrentIndex(1);
+}
 
+void  MainWindow::rewriteWolframCode()
+{
+    QString y = QString::fromStdString(m_WolframConverter->process());
+    QString difOp = QString::fromStdString(m_WolframConverter->differentialOperator());
+    QString u = QString::fromStdString(m_WolframConverter->rightSideOfEquation());
+    QString grin = QString::fromStdString(m_WolframConverter->grinFunction());
+    QString area = QString::fromStdString(m_WolframConverter->area());
+    QString L = QString::fromStdString(m_WolframConverter->conditions());
+    ui->labelWolframCode->setText(y + difOp + u + grin + area + L);
 }
