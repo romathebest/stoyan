@@ -92,6 +92,26 @@ namespace mathmod
 
     string Passport::conditions()
     {
-        return "undefinded";
+        vector<Pointf> initial = pSystem->getInitialConditions();
+        vector<Pointf> current = pSystem->getCurrentConditions();
+        return "Потчакові умови:\n" + buildConditionString(initial) +
+                "Поточні умови:\n" + buildConditionString(current);
+    }
+
+    string Passport::buildConditionString(vector<Pointf> conditions)
+    {
+        string res = "";
+        for(int i = 0; i < conditions.size(); i++)
+        {
+            string str ="y(";
+            for(int j = 0; j < conditions[i].size() - 1; j++)
+            {
+                str += Converter::toStr<float>(conditions[i][j]);
+                if(j < conditions[i].size() - 2) str += ",";
+            }
+            str += ") = " + Converter::toStr<float>(conditions[i][conditions[i].size() - 1]) + "\n";
+            res += str;
+        }
+        return res;
     }
 }

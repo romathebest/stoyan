@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <string>
+#include "Range.h"
 
 using std::string;
 
@@ -77,9 +78,9 @@ namespace mathmod
         string str = "";
         for(unsigned int i = 0; i < m_Vector.size() - 1; i++ )
         {
-            str += m_Vector[i] +", ";
+            str += Converter::toStr(m_Vector[i]) +", ";
         }
-        str += m_Vector[m_Vector.size() - 1];
+        str += Converter::toStr(m_Vector[m_Vector.size() - 1]);
         return str;
     }
 

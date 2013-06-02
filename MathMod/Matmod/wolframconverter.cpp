@@ -69,12 +69,12 @@ namespace mathmod
         res += parameters();
         res += "] =";
         res += m_pSystem->getDifferentialOperator();
-        res += ";";
+        res += ";\n";
         return  res;
     }
     string WolframConverter::rightSideOfEquation() const
     {
-        return "u[x_, t_] := -((Pi^2 + 9)*Sin[t]*Sin[(Pi*x)/3])/9;";
+        return "";//u[x_, t_] := -((Pi^2 + 9)*Sin[t]*Sin[(Pi*x)/3])/9;";
     }
 
     string WolframConverter::problemType()

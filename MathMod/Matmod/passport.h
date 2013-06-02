@@ -2,6 +2,10 @@
 #define PASSPORT_H
 
 #include "mathmod.h"
+#include <string>
+#include "Point.h"
+
+using std::string;
 
 namespace mathmod
 {
@@ -25,6 +29,8 @@ namespace mathmod
         string area();
 
         string conditions();
+    private:
+        string buildConditionString(vector<Pointf> conditions);
     private:
         ISystem *pSystem;
     };
