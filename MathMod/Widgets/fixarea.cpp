@@ -9,7 +9,7 @@ FixArea::FixArea(PointStr param, QWidget *parent) :
     for(int i = 0; i < m_Parameters.size(); i++)
     {
         m_FixWidgets.push_back(new FixWidget(m_Parameters[i]));
-        vbox->addWidget(m_FixWidgets.back(), i, 0, 1, 1, Qt::AlignCenter);
+        vbox->addWidget(m_FixWidgets.back(), 0, i, 1, 1, Qt::AlignCenter);
     }
 
     parent->setLayout(vbox);

@@ -17,7 +17,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     m_Control = new bool[3];
 
-    m_PlotDrawing = new PlotDrawing(ui->ResultGraphic);
+    //m_PlotDrawing = new PlotDrawing(ui->ResultGraphic);
 
     m_ParametersWidget = new ParametrsWidget(ui->widget_4);
     ui->toolBox->setCurrentIndex(0);
@@ -69,6 +69,9 @@ void MainWindow::on_pushButton_pressed()
     m_System->setParameters(m_ParametersWidget->parameters());
 
     m_AreaWidget = new AreaWidget(m_ParametersWidget->parameters(), ui->widget_17);
+
+    m_FixPointsWidget = new FixArea(m_ParametersWidget->parameters(), ui->widget_24);
+
   //  ui->widgetArea->update();
     ui->toolBox->setCurrentIndex(1);
 
@@ -256,7 +259,7 @@ void MainWindow::on_pushButtonConnectWithWolfram_clicked()
 void MainWindow::on_pushButtonSolve_clicked()
 {
     ui->stackedWidgetResult->setCurrentIndex(0);
-    if (m_WolframObject->isOpen())
+    /*if (m_WolframObject->isOpen())
     {
         //пішла жара
 
@@ -269,7 +272,7 @@ void MainWindow::on_pushButtonSolve_clicked()
 
         m_PlotDrawing->SetBoundary(-10, 10, 10, -10);
         m_PlotDrawing->DrawVectorPoints(x, y, "x", "t");
-    }
+    }*/
 
     ui->ResultGraphic->setVisible(true);
 }
@@ -278,4 +281,14 @@ void MainWindow::on_pushButtonBuildPassport_clicked()
 {
     ui->stackedWidgetResult->setCurrentIndex(1);
 
+}
+
+void MainWindow::on_pushButton_3_clicked()
+{
+    // apply mathematica
+    QString path("../results/images.jpeg");
+    QImage image(path);
+    ui->graphicView->setPixmap(QPixmap::fromImage(image));
+    ui->graphicView->adjustSize();
+    ui->graphicView->setScaledContents(true);
 }

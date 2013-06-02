@@ -9,6 +9,7 @@
 #include <Widgets/areawidget.h>
 #include <Widgets/observationpointwidget.h>
 #include <Widgets/plotdrawing.h>
+#include <Widgets/fixarea.h>
 
 #include <Matmod/System.h>
 #include <Matmod/passport.h>
@@ -66,11 +67,14 @@ private slots:
 
     void on_pushButtonBuildPassport_clicked();
 
+    void on_pushButton_3_clicked();
+
 private:
     bool* m_Control;
     Ui::MainWindow *ui;
     ParametrsWidget *m_ParametersWidget;
     AreaWidget *m_AreaWidget;
+    FixArea * m_FixPointsWidget;
     ObservationPointWidget *m_ObservationPointWidget;
     ObservationPointWidget *m_PointWidgetU0;
     ObservationPointWidget *m_PointWidgetUG;
