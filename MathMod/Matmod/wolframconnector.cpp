@@ -123,15 +123,6 @@ namespace mathmod
             return "Error. Unable to flush an outgoing data buffered.";
         }
 
-        int pkt;
-        while ((pkt = MLNextPacket(m_WolframLink),pkt) && pkt != RETURNPKT)
-        {
-            MLNewPacket(m_WolframLink);
-            if (MLError(m_WolframLink))
-            {
-                return "Error!";
-            }
-        }
     }
 
 }

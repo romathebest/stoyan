@@ -33,7 +33,7 @@ MainWindow::MainWindow(QWidget *parent) :
     m_WolframObject = new WolframConnector(m_WolframConverter);
 
 
-    ui->pushButtonSolve->setEnabled(true);
+    ui->pushButtonSolve->setEnabled(false);
 
     ui->widget_u0->setEnabled(false);
     ui->widget_ug->setEnabled(false);
