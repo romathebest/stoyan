@@ -8,7 +8,7 @@ AreaWidget::AreaWidget(PointStr param, QWidget *parent) :
 
     for(int i = 0; i < m_Parameters.size(); i++)
     {
-        m_RangeWidgets.push_back(new RangeWidget(m_Parameters[i]));
+        m_RangeWidgets.push_back(new RangeWidget(false, m_Parameters[i]));
         vbox->addWidget(m_RangeWidgets.back(), i, 0, 1, 1, Qt::AlignCenter);
     }
 

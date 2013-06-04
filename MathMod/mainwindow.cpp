@@ -7,8 +7,11 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
     m_AreaWidget(NULL),
+    m_AreaWidgetModU(NULL),
+    m_AreaWidgetModUg(NULL),
     m_ObservationPointWidget(NULL),
     m_PointWidgetU0(NULL),
+    m_PointWidgetU(NULL),
     m_PointWidgetUG(NULL),
     m_DialogGetProcess(NULL),
     m_WolframObject(NULL)
@@ -35,10 +38,11 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->pushButtonSolve->setEnabled(false);
 
-    ui->widget_u0->setEnabled(false);
-    ui->widget_ug->setEnabled(false);
+    ui->widget_u_2->setEnabled(false);
+    ui->widget_u0_2->setEnabled(false);
+    ui->widget_ug_2->setEnabled(false);
 
-    ui->widget_DiskModFunc->setEnabled(false);
+    ui->widget_DiskModFunc_2->setEnabled(false);
 }
 
 void MainWindow::DisableProcessInput()
@@ -106,38 +110,68 @@ void MainWindow::on_pushButton_5_pressed()
     if (ui->checkBoxFK->isChecked())
     {
         m_Control[0] = true;
+        ui->widget_u_2->setEnabled(true);
+        ui->widget_UNep_2->setEnabled(true);
+
+        if (m_PointWidgetU != NULL)
+        {
+            delete m_PointWidgetU;
+        }
+        if (m_AreaWidgetModU != NULL)
+        {
+            delete m_AreaWidgetModU;
+        }
+
+        m_PointWidgetU = new ObservationPointWidget(m_AreaWidget->area(), ui->widget_DiskU_2);
+        m_AreaWidgetModU = new AreaOutsideWidget(m_ParametersWidget->parameters(), ui->widget_UNep_2);
     }
+    else
+    {
+        ui->widget_u_2->setEnabled(false);
+        ui->widget_DiskU_2->setEnabled(false);
+        ui->widget_UNep_2->setEnabled(false);
+    }
+
     if(ui->checkBoxPY->isChecked())
     {
         m_Control[1] = true;
-        ui->widget_u0->setEnabled(true);
+        ui->widget_u0_2->setEnabled(true);
 
         if (m_PointWidgetU0 != NULL)
         {
             delete m_PointWidgetU0;
         }
-        m_PointWidgetU0 = new ObservationPointWidget(m_AreaWidget->area(), ui->widget_DiskU0);
+        m_PointWidgetU0 = new ObservationPointWidget(m_AreaWidget->area(), ui->widget_DiskU0_2);
     }
     else
     {
-        ui->widget_u0->setEnabled(false);
-        ui->widget_DiskU0->setEnabled(false);
+        ui->widget_u0_2->setEnabled(false);
+        ui->widget_DiskU0_2->setEnabled(false);
     }
+
     if(ui->checkBoxKY->isChecked())
     {
         m_Control[2] = true;
-        ui->widget_ug->setEnabled(true);
+        ui->widget_ug_2->setEnabled(true);
+        ui->widget_UgNep_2->setEnabled(true);
 
         if (m_PointWidgetUG != NULL)
         {
             delete m_PointWidgetUG;
         }
-        m_PointWidgetUG = new ObservationPointWidget(m_AreaWidget->area(), ui->widget_DiskUg);
+        if (m_AreaWidgetModUg != NULL)
+        {
+            delete m_AreaWidgetModUg;
+        }
+
+        m_PointWidgetUG = new ObservationPointWidget(m_AreaWidget->area(), ui->widget_DiskUg_2);
+        m_AreaWidgetModUg = new AreaOutsideWidget(m_ParametersWidget->parameters(), ui->widget_UgNep_2);
     }
     else
     {
-        ui->widget_ug->setEnabled(false);
-        ui->widget_DiskUg->setEnabled(false);
+        ui->widget_ug_2->setEnabled(false);
+        ui->widget_DiskUg_2->setEnabled(false);
+        ui->widget_UgNep_2->setEnabled(false);
     }
     m_System->setControlParam(m_Control);
 
@@ -177,9 +211,13 @@ void MainWindow::rewritePassport()
     problemType += QString::fromStdString(m_PassportObject->problemType());
     problemType += "\n";
 
-    QString controlType = "Керуємо: ";
-    controlType += QString::fromStdString(m_PassportObject->controlParam());
-    controlType += "\n";
+    QString controlType = "";
+    if (m_PassportObject->problemType() == "Обернена задача")
+    {
+        controlType = "Керуємо: ";
+        controlType += QString::fromStdString(m_PassportObject->controlParam());
+        controlType += "\n";
+    }
 
     QString area = "Область:\n";
     area += QString::fromStdString(m_PassportObject->area());
@@ -238,16 +276,16 @@ void MainWindow::on_pushButton_9_pressed()
     m_System->setCondtion(m_ObservationPointWidget->points());
 }
 
-void MainWindow::on_radioButtonInverseProblem_2_pressed()
+void MainWindow::on_radioButtonInverseProblem_3_pressed()
 {
-    ui->widget_23->setEnabled(false);
-    ui->widget_DiskModFunc->setEnabled(true);
+    ui->widget_29->setEnabled(false);
+    ui->widget_DiskModFunc_2->setEnabled(true);
 }
 
-void MainWindow::on_radioButtonDirectProblem_2_pressed()
+void MainWindow::on_radioButtonDirectProblem_3_pressed()
 {
-    ui->widget_23->setEnabled(true);
-    ui->widget_DiskModFunc->setEnabled(false);
+    ui->widget_29->setEnabled(true);
+    ui->widget_DiskModFunc_2->setEnabled(false);
 }
 
 void MainWindow::on_pushButtonConnectWithWolfram_clicked()

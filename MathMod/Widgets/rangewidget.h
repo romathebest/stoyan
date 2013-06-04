@@ -14,7 +14,7 @@ class RangeWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit RangeWidget(std::string param, QWidget *parent = 0);
+    explicit RangeWidget(bool aIsMod, std::string param, QWidget *parent = 0);
     Rangef range();
 signals:
     
@@ -25,9 +25,11 @@ private slots:
     void maximumRangeChanged(double val);
 
 private:
+    bool m_IsMod;
     Rangef m_Range;
 
     QDoubleSpinBox *m_dsbMinValue, *m_dsbMaxValue;
+    QDoubleSpinBox *m_dsbMinValueLeft, *m_dsbMaxValueRight;
     QLabel *m_lblParameter;
     
 };

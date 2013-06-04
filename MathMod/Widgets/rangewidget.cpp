@@ -1,7 +1,8 @@
 #include "rangewidget.h"
 
-RangeWidget::RangeWidget(std::string param, QWidget *parent) :
-    QWidget(parent)
+RangeWidget::RangeWidget(bool aIsMod, std::string param, QWidget *parent) :
+    QWidget(parent),
+    m_IsMod(aIsMod)
 {
     m_Range.param = param;
 
@@ -10,12 +11,19 @@ RangeWidget::RangeWidget(std::string param, QWidget *parent) :
 
     m_dsbMaxValue = new QDoubleSpinBox(this);
     m_dsbMinValue = new QDoubleSpinBox(this);
+    if (m_IsMod)
+    {
+        m_dsbMinValueLeft = new QDoubleSpinBox(this);
+        m_dsbMaxValueRight = new QDoubleSpinBox(this);
+    }
 
     m_lblParameter = new QLabel(QString::fromStdString(m_Range.param), this);
 
+    if (m_IsMod) vbox->addWidget(m_dsbMinValueLeft);
     vbox->addWidget(m_dsbMinValue);
     vbox->addWidget(m_lblParameter);
     vbox->addWidget(m_dsbMaxValue);
+    if (m_IsMod) vbox->addWidget(m_dsbMaxValueRight);
 
     m_dsbMinValue->setMaximum(0.0d);
     connect(m_dsbMaxValue, SIGNAL(valueChanged(double)), this, SLOT(maximumRangeChanged(double)));

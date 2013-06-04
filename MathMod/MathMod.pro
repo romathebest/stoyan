@@ -41,7 +41,8 @@ SOURCES += main.cpp\
     Matmod/wolframconnector.cpp \
     Matmod/wolframconverter.cpp \
     Widgets/fixwidget.cpp \
-    Widgets/fixarea.cpp
+    Widgets/fixarea.cpp \
+    Widgets/areaoutsidewidget.cpp
 
 HEADERS  += mainwindow.h \
     Matmod/System.h \
@@ -62,7 +63,8 @@ HEADERS  += mainwindow.h \
     Matmod/wolframconnector.h \
     Matmod/wolframconverter.h \
     Widgets/fixwidget.h \
-    Widgets/fixarea.h
+    Widgets/fixarea.h \
+    Widgets/areaoutsidewidget.h
 
 LIBS +=  ../lib/ml32i3m.lib
 

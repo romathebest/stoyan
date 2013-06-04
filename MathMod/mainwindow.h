@@ -10,6 +10,7 @@
 #include <Widgets/observationpointwidget.h>
 #include <Widgets/plotdrawing.h>
 #include <Widgets/fixarea.h>
+#include <Widgets/areaoutsidewidget.h>
 
 #include <Matmod/System.h>
 #include <Matmod/wolframconverter.h>
@@ -59,9 +60,9 @@ private slots:
 
     void on_pushButton_9_pressed();
 
-    void on_radioButtonInverseProblem_2_pressed();
+    void on_radioButtonInverseProblem_3_pressed();
 
-    void on_radioButtonDirectProblem_2_pressed();
+    void on_radioButtonDirectProblem_3_pressed();
 
     void on_pushButtonConnectWithWolfram_clicked();
 
@@ -76,9 +77,12 @@ private:
     Ui::MainWindow *ui;
     ParametrsWidget *m_ParametersWidget;
     AreaWidget *m_AreaWidget;
+    AreaOutsideWidget *m_AreaWidgetModU;
+    AreaOutsideWidget *m_AreaWidgetModUg;
     FixArea * m_FixPointsWidget;
     ObservationPointWidget *m_ObservationPointWidget;
     ObservationPointWidget *m_PointWidgetU0;
+    ObservationPointWidget *m_PointWidgetU;
     ObservationPointWidget *m_PointWidgetUG;
     dialogChooseExistProcess* m_DialogGetProcess;
 
